@@ -1,3 +1,5 @@
+#TODO Simpele deltatime voordat je uberhaupt kan beginnen
+
 # Benodigde libraries voor de game.
 import sys, pygame
 

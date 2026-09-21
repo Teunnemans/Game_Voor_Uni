@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Game_Uni_Real.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
+    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="Initial commit :)">
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/pyProjectModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,25 +17,37 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Teunnemans"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Teunnemans/Game_Voor_Uni.git",
+    "accountId": "2d593981-b810-4193-95b6-323af216aac3"
+  }
+}]]></component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.006801176275751" />
-      <entry key="MS500" value="1.3693195341828643" />
-      <entry key="S2" value="2.1879798885561" />
-      <entry key="S5" value="4.04259199396115" />
-      <entry key="S10" value="7.059855975169465" />
-      <entry key="S30" value="14.961221671322383" />
-      <entry key="S60" value="20.264070356743527" />
-      <entry key="M2" value="25.771026736887748" />
-      <entry key="M5" value="32.07309489257235" />
-      <entry key="M10" value="35.164252512676654" />
-      <entry key="M15" value="36.35045403863655" />
-      <entry key="M30" value="37.62634968541694" />
-      <entry key="H1" value="38.300423389206436" />
-      <entry key="H2" value="38.64695471380804" />
-      <entry key="H4" value="38.8226543039078" />
-      <entry key="D1" value="38.970327315542214" />
-      <entry key="W1" value="38.9957582171688" />
+      <entry key="MS100" value="1.0674522706920042" />
+      <entry key="MS500" value="1.6819848831023725" />
+      <entry key="S2" value="3.638922433795899" />
+      <entry key="S5" value="6.217656993430096" />
+      <entry key="S10" value="8.06232502912759" />
+      <entry key="S30" value="10.445689983536791" />
+      <entry key="S60" value="14.598682335068949" />
+      <entry key="M2" value="23.010326815983294" />
+      <entry key="M5" value="36.18274741893762" />
+      <entry key="M10" value="43.73269138658305" />
+      <entry key="M15" value="46.803991194286674" />
+      <entry key="M30" value="50.212003423374476" />
+      <entry key="H1" value="52.05556818221094" />
+      <entry key="H2" value="53.01478695840236" />
+      <entry key="H4" value="53.50409416567823" />
+      <entry key="D1" value="53.91688647458832" />
+      <entry key="W1" value="53.98811525466171" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
@@ -58,24 +69,32 @@
       <entry key="W1" value="0.0" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9393787133833404" />
-      <entry key="MS500" value="1.3504609871336997" />
-      <entry key="S2" value="2.1799733610277054" />
-      <entry key="S5" value="4.036018338055869" />
-      <entry key="S10" value="7.051693619672633" />
-      <entry key="S30" value="14.952182938500737" />
-      <entry key="S60" value="20.257490134280783" />
-      <entry key="M2" value="25.76695393177396" />
-      <entry key="M5" value="32.07120432469225" />
-      <entry key="M10" value="35.163253263669986" />
-      <entry key="M15" value="36.34977485261488" />
-      <entry key="M30" value="37.626003292530704" />
-      <entry key="H1" value="38.300248434977604" />
-      <entry key="H2" value="38.64686678969835" />
-      <entry key="H4" value="38.82261022913955" />
-      <entry key="D1" value="38.97031995401001" />
-      <entry key="W1" value="38.99575716513485" />
+      <entry key="MS100" value="0.9962431664612338" />
+      <entry key="MS500" value="1.648493472428607" />
+      <entry key="S2" value="3.6082874868579817" />
+      <entry key="S5" value="6.162705017140777" />
+      <entry key="S10" value="8.011562050645434" />
+      <entry key="S30" value="10.419521902579387" />
+      <entry key="S60" value="14.583104672011682" />
+      <entry key="M2" value="23.00098362998881" />
+      <entry key="M5" value="36.17823453140501" />
+      <entry key="M10" value="43.73023849995433" />
+      <entry key="M15" value="46.802305117521826" />
+      <entry key="M30" value="50.211132889771356" />
+      <entry key="H1" value="52.05512561868982" />
+      <entry key="H2" value="53.01456379659925" />
+      <entry key="H4" value="53.503982107586125" />
+      <entry key="D1" value="53.91686773134434" />
+      <entry key="W1" value="53.98811257540906" />
     </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <hideBySeverity>
+      <option value="11" />
+      <option value="14" />
+      <option value="15" />
+      <option value="16" />
+    </hideBySeverity>
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 6,
@@ -88,17 +107,24 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -306,12 +332,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1789992285316</updated>
-      <workItem from="1789992286351" duration="248000" />
+      <workItem from="1789992286351" duration="441000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit :)">
+      <option name="closed" value="true" />
+      <created>1789992626088</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1789992626088</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit :)" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Game_Uni_Real$main.coverage" NAME="main Coverage Results" MODIFIED="1789992479307" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
