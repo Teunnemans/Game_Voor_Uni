@@ -1,5 +1,5 @@
 # Benodigde libraries voor de game. Inclusief eigen bestanden
-import sys, pygame, time
+import sys, pygame
 from Game import Game
 
 #Initialisatie van de verschillende programma's, oa schermgrootte
@@ -12,12 +12,14 @@ _Game = Game(Screen)
 
 # Game loop met exit conditie
 while True:
+    # Scherm reset
+    Screen.fill((0, 0, 255))
+
     for Event in pygame.event.get():
         if Event.type == pygame.QUIT:
             sys.exit()
-    # Update ALLES
+    # Update ALLES, Tekent ALLES
     _Game.Update()
-    # Teken ALLES
     _Game.Draw()
-    # Reset het scherm
+    # Volgende frame
     pygame.display.flip()

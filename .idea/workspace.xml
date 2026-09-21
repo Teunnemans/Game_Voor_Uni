@@ -4,18 +4,22 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="project staat klaar voor maken">
-      <change afterPath="$PROJECT_DIR$/Entity.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GameInfo.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="Basis entity systeem, klaar voor speler">
+      <change afterPath="$PROJECT_DIR$/Player.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Entity.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entity.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/GameInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameInfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="16" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -43,63 +47,67 @@
     <setting file="file://$PROJECT_DIR$/Entity.py" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/main.py" root0="SKIP_INSPECTION" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0054553359234844" />
-      <entry key="MS500" value="1.4460025681612116" />
-      <entry key="S2" value="2.3267029070735132" />
-      <entry key="S5" value="3.2059071474262275" />
-      <entry key="S10" value="6.181177003698006" />
-      <entry key="S30" value="20.531296709064257" />
-      <entry key="S60" value="39.391240922234914" />
-      <entry key="M2" value="70.29062962961406" />
-      <entry key="M5" value="138.7066066170388" />
-      <entry key="M10" value="219.01756038520088" />
-      <entry key="M15" value="275.5587764686841" />
-      <entry key="M30" value="375.42467839580326" />
-      <entry key="H1" value="460.1542325025091" />
-      <entry key="H2" value="518.5517182979198" />
-      <entry key="H4" value="553.4293428061355" />
-      <entry key="D1" value="586.0445553557745" />
-      <entry key="W1" value="591.9970478368298" />
+      <entry key="MS100" value="1.0000047900075393" />
+      <entry key="MS500" value="1.1224383510711937" />
+      <entry key="S2" value="2.231918236922186" />
+      <entry key="S5" value="3.1777718079406223" />
+      <entry key="S10" value="4.186917145156722" />
+      <entry key="S30" value="6.608152838681764" />
+      <entry key="S60" value="9.15091135264199" />
+      <entry key="M2" value="17.118238773152804" />
+      <entry key="M5" value="49.68162960942196" />
+      <entry key="M10" value="110.76562853523734" />
+      <entry key="M15" value="179.11129030586324" />
+      <entry key="M30" value="365.2524037636165" />
+      <entry key="H1" value="588.3357134052792" />
+      <entry key="H2" value="774.5644335961223" />
+      <entry key="H4" value="897.7622134918653" />
+      <entry key="D1" value="1020.7998672533425" />
+      <entry key="W1" value="1044.0571634871176" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="5.183572091532758E-112" />
-      <entry key="S2" value="1.508888976553106E-28" />
-      <entry key="S5" value="7.438115439024003E-12" />
-      <entry key="S10" value="2.727290860731417E-6" />
-      <entry key="S30" value="0.013973341992227545" />
-      <entry key="S60" value="0.12053638617182869" />
-      <entry key="M2" value="0.43472193801083975" />
-      <entry key="M5" value="1.6236970486249986" />
-      <entry key="M10" value="3.3474306564151264" />
-      <entry key="M15" value="4.616421976543933" />
-      <entry key="M30" value="6.815517942546468" />
-      <entry key="H1" value="8.552661406218176" />
-      <entry key="H2" value="9.668549949214695" />
-      <entry key="H4" value="10.304469962899569" />
-      <entry key="D1" value="10.879669263957927" />
-      <entry key="W1" value="10.982698207156297" />
+      <entry key="MS500" value="4.283810722753102E-71" />
+      <entry key="S2" value="2.5583359279356453E-18" />
+      <entry key="S5" value="9.191317988324878E-8" />
+      <entry key="S10" value="3.11116626555198E-4" />
+      <entry key="S30" value="0.09931984415830675" />
+      <entry key="S60" value="0.5988759450879461" />
+      <entry key="M2" value="2.0734693561383426" />
+      <entry key="M5" value="6.646534945178902" />
+      <entry key="M10" value="13.181944272024946" />
+      <entry key="M15" value="18.462556348134363" />
+      <entry key="M30" value="28.81199190750713" />
+      <entry key="H1" value="38.290539027637095" />
+      <entry key="H2" value="45.08743714245712" />
+      <entry key="H4" value="49.231113437450695" />
+      <entry key="D1" value="53.15682897886098" />
+      <entry key="W1" value="53.878291539078774" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9710972070357476" />
-      <entry key="MS500" value="1.4336651205493784" />
-      <entry key="S2" value="2.320534905633201" />
-      <entry key="S5" value="3.202368726507033" />
-      <entry key="S10" value="6.177830914818065" />
-      <entry key="S30" value="20.537950817918766" />
-      <entry key="S60" value="39.49425428132236" />
-      <entry key="M2" value="70.69454292608728" />
-      <entry key="M5" value="140.2790899211009" />
-      <entry key="M10" value="222.305791370962" />
-      <entry key="M15" value="280.1185832828157" />
-      <entry key="M30" value="382.1972003727475" />
-      <entry key="H1" value="468.67970356759656" />
-      <entry key="H2" value="528.2048639721256" />
-      <entry key="H4" value="563.725597578453" />
-      <entry key="D1" value="596.9227782714429" />
-      <entry key="W1" value="602.9795374510014" />
+      <entry key="MS100" value="9.62071353087244E-6" />
+      <entry key="MS500" value="0.14587381036854816" />
+      <entry key="S2" value="1.5314728224992027" />
+      <entry key="S5" value="2.7810666805867665" />
+      <entry key="S10" value="3.960524933040051" />
+      <entry key="S30" value="6.6199879273283" />
+      <entry key="S60" value="9.690575591526747" />
+      <entry key="M2" value="19.131283137230163" />
+      <entry key="M5" value="56.26075436476995" />
+      <entry key="M10" value="123.88408768932892" />
+      <entry key="M15" value="197.51360426325715" />
+      <entry key="M30" value="394.01180619571926" />
+      <entry key="H1" value="626.5868429151922" />
+      <entry key="H2" value="819.6267759537034" />
+      <entry key="H4" value="946.9790188914844" />
+      <entry key="D1" value="1073.9540215386173" />
+      <entry key="W1" value="1097.9350651445193" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -126,7 +134,9 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.Game.executor": "Run",
     "Python.GameInfo.executor": "Run",
+    "Python.Player.executor": "Run",
     "Python.main.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -137,6 +147,7 @@
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
+    "junie.plugin.stays.banner.dismissed": "true",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -146,6 +157,12 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Teunw\PycharmProjects\Game_Uni_Real" />
+      <recent name="C:\Users\Teunw\PycharmProjects\Game_Uni_Real\Code" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration default="true" type="DjangoTestsConfigurationType">
       <module name="game-uni-real" />
@@ -349,7 +366,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1789992285316</updated>
-      <workItem from="1789992286351" duration="4111000" />
+      <workItem from="1789992286351" duration="7054000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit :)">
       <option name="closed" value="true" />
@@ -367,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1789992771073</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Basis entity systeem, klaar voor speler">
+      <option name="closed" value="true" />
+      <created>1789997226838</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1789997226838</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -376,11 +401,13 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit :)" />
     <MESSAGE value="project staat klaar voor maken" />
-    <option name="LAST_COMMIT_MESSAGE" value="project staat klaar voor maken" />
+    <MESSAGE value="Basis entity systeem, klaar voor speler" />
+    <option name="LAST_COMMIT_MESSAGE" value="Basis entity systeem, klaar voor speler" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Game_Uni_Real$Game.coverage" NAME="Game Coverage Results" MODIFIED="1789997158004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Game_Uni_Real$GameInfo.coverage" NAME="GameInfo Coverage Results" MODIFIED="1789995544092" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Game_Uni_Real$main.coverage" NAME="main Coverage Results" MODIFIED="1789997161482" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Game_Uni_Real$Game.coverage" NAME="Game Coverage Results" MODIFIED="1789998720607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Game_Uni_Real$GameInfo.coverage" NAME="GameInfo Coverage Results" MODIFIED="1789999637561" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Game_Uni_Real$main.coverage" NAME="main Coverage Results" MODIFIED="1790000114168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Game_Uni_Real$Player.coverage" NAME="Player Coverage Results" MODIFIED="1789999999682" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
