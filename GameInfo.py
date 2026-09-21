@@ -8,7 +8,6 @@ class GameInfo:
         # Een grote lijst met allemaal Entity-Class objecten. Kan hier iteratief alle Draw() en Update() functies uitvoeren
         # Speler staat hier NIET in, die staat een laag hoger, in Game, omdat er maar 1 speler is.
         self.EntityList = []
-
         # Deltatime setup
         self.Deltatime = self.Old_Time = time.perf_counter()
 
@@ -33,4 +32,7 @@ class GameInfo:
             Entity.Draw()
 
         # Laat de fps van het spel zien.
-        self._Game._Screen.blit(self._Game.Game_Font.render(f"FPS: {round(1/self.Deltatime)}", True, (255, 255, 255)), (0,0))
+        self._Game.Get_Screen().blit(self._Game.Font.render(f"FPS: {round(1/self.Deltatime)}", True, (255, 0, 0)), (0,0))
+        # Laat wat statistieken van de speler zien. Lang lijntje code maar is toch debug
+        self._Game.Get_Screen().blit(self._Game.Font.render(f"X: {round(self._Game.Player.X)}, Y: {round(self._Game.Player.Y)}", True, (255, 0, 0)), (0,50))
+        self._Game.Get_Screen().blit(self._Game.Font.render(f"Speed_X: {round(self._Game.Player.Speed_X)}, Speed_Y: {round(self._Game.Player.Speed_Y)}", True, (255, 0, 0)), (0,100))

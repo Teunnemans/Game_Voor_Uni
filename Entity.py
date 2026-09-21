@@ -10,7 +10,7 @@ class Entity:
         # Een unieke code Specifiek tot DIE entity, gebruikt voor identificatie.
         self.ID = uuid.uuid4()
 
-        # "Plaatje" van de entity
+        # "Plaatje" van de entity, TODO Vervangen voor een animatiesysteem
         self.Sprite = Game_Sprite
         # "Positie" van de entity
         self.X = X
@@ -23,6 +23,10 @@ class Entity:
         # Draaiing in graden
         self.Rotation = Rotation
 
+    # TODO Collision handling
+    def Handle_Collision(self):
+        pass
+
     # Zelf in te vullen, wil je dat een entity iets anders doet/ander gedrag heeft? Dan kan dat.
     # Dit is in ieder geval standaard gedrag.
     def Update(self):
@@ -31,4 +35,4 @@ class Entity:
     # Ook zelf in te vullen, misschien wil je wel helemaal niet dat de entity getekend wordt, kan ook.
     # Dit is standaard gedrag.
     def Draw(self):
-        self._Game._Screen.blit(self.Sprite, (self.X, self.Y))
+        self._Game.Get_Screen().blit(self.Sprite, (self.X, self.Y))
