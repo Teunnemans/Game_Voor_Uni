@@ -1,66 +1,43 @@
-import pygame, numpy as np
+import pygame
 from Entity import Entity
+from Functions import Clamp_Vector
 
 # Speler class, handlet input en is centraal voor het spel. Is er maar 1 van in het spel.
 class Player(Entity):
-    def __init__(self, _Game, X: int = 0 , Y: int = 0, Z: int = 0, Rotation: int = 0):
-        super().__init__(pygame.transform.scale(pygame.image.load("Art/Player.png"), (50, 50)), _Game, X, Y, Z, Rotation)
+    def __init__(self, _Game, Position: pygame.Vector2 = pygame.Vector2(0,0), Rotation: int = 0):
+        super().__init__(pygame.transform.scale(pygame.image.load("Art/Player.png"), (50, 50)), _Game, Position, Rotation)
 
         # Hoe snel beweegt de speler?
-        self.MaxSpeed_X, self.MaxSpeed_Y = 250, 250
-        self.Speed_X, self.Speed_Y = 0, 0
-        # Hoe snel valt de speler als je het gas niet indrukt?
-        #self.Falling_Speed_Acceleration = 10000
-        # Acceleratie in de x richting, met max snelheid 250 is de snelheid in 250/5000 seconden bereikt.
-        self.Acceleration_X, self.Acceleration_Y = 5000, 5000
-        # wrijving zodat de auto natuurlijk tot stilstand komt,
-        # gegeven als vertragingsfactor 1/Friction zodat ie inzichtelijker is(Vind ik fijn)
-        self.Friction = 1.005
+        self.MaxSpeed = pygame.Vector2(250, 250)
+        self.Speed = pygame.Vector2(0, 0)
+        # Hoe snel versnelt de speler?
+        self.Acceleration = pygame.Vector2(5000, 5000)
 
+    # Input die de speler verplaatst aan de hand van een paar variabelen zoals acceleratie etc.
     def Handle_Movement(self):
+        # TODO Uitvogelen hoe mijn trekkracht moet werken
         # Input die de speler verplaatst aan de hand van een paar variabelen zoals acceleratie etc.
         Keys = pygame.key.get_pressed()
-        if Keys[pygame.K_UP]:
-            self.Speed_Y -= self.Acceleration_Y * self._Game._GameInfo.Deltatime
-        if Keys[pygame.K_DOWN]:
-            self.Speed_Y += self.Acceleration_Y * self._Game._GameInfo.Deltatime
-        # Niet omhoog betekent omlaag.
+        # Coole compactere versie van de inputregelaar die ik eerst had. Maakt van Direction een richtingvector die gebruikt
+        # wordt bij het berekenen van de snelheid
+        Direction = pygame.Vector2(
+            Keys[pygame.K_RIGHT] - Keys[pygame.K_LEFT],
+            Keys[pygame.K_DOWN] - Keys[pygame.K_UP] )
 
-        # TODO Uitvogelen hoe mijn trekkracht moet werken
-        # else:
-        #    if not Keys[pygame.K_DOWN]:
-        #        # "Trekkracht van de baan": Gaat achteruit als je geen gas geeft
-        #        self.Speed_Y += self.Falling_Speed_Acceleration * self._Game._GameInfo.Deltatime
-        #    else:
-        #        # "Trekkracht van de baan": Gaat achteruit als je geen gas geeft, Harder nu als je remt.
-        #        self.Speed_Y += 2*(self.Falling_Speed_Acceleration * self._Game._GameInfo.Deltatime)
-        #        print("We go  up")
+        # Nu ben je diagonaal niet meer sneller
+        if Direction.length_squared() > 0:
+            Direction = Direction.normalize()
 
-        if Keys[pygame.K_LEFT]:
-            self.Speed_X -= self.Acceleration_X * self._Game._GameInfo.Deltatime
-        if Keys[pygame.K_RIGHT]:
-            self.Speed_X += self.Acceleration_X * self._Game._GameInfo.Deltatime
-
-        # Wrijvingscoefficient toepassen. Straks Alleen op X-as. Voor nu ook op de Y-As
-        self.Speed_X *= 1 / self.Friction
-        self.Speed_Y *= 1 / self.Friction
-
-        # Houdt de snelheid van de spelers binnen de kaders van het spel.
-        self.Speed_X = np.clip(self.Speed_X, -self.MaxSpeed_X, self.MaxSpeed_X)
-        self.Speed_Y = np.clip(self.Speed_Y, -self.MaxSpeed_Y, self.MaxSpeed_Y)
+        # Elementwise omdat hij anders het inproduct berekent en de snelheid omzet naar een scalar. Kostte mij veel debugtijd
+        self.Speed += (Direction * self.Acceleration.elementwise() * self._Game.Get_GameInfo().Deltatime)
+        # Frictie
+        self.Speed *= max(0, 1 - self._Game.Get_GameInfo().Friction * self._Game.Get_GameInfo().Deltatime)
+        self.Speed = Clamp_Vector(self.Speed, -self.MaxSpeed, self.MaxSpeed) # Houdt de snelheid van de spelers binnen de kaders van het spel.
 
         # Hier oefent de snelheid de verplaatsing uit als functie van de acceleratie.
-        self.X += (self.Speed_X * self._Game._GameInfo.Deltatime)
-        self.Y += (self.Speed_Y * self._Game._GameInfo.Deltatime)
-
-        # Houdt de speler binnen de kaders van het spel, *2 omdat ie de rect vanaf links berekent
-        self.X = np.clip(self.X, 0 + self.Width, self._Game._Screen.get_width() - 2 * self.Width)
-        self.Y = np.clip(self.Y, 0 + self.Height, self._Game._Screen.get_height() - 2 * self.Height)
-
-        # Debug statement
-        # print(f"X: {self.X}, Y: {self.Y},\n Speed_X: {self.Speed_X}, Speed_Y: {self.Speed_Y},\n Acceleration: {self.Acceleration_X},\n Acceleration: {self.Acceleration_Y}")
-
-        return None
+        self.Position += (self.Speed * self._Game.Get_GameInfo().Deltatime)
+        # Houdt de speler binnen de kaders van het spel.
+        self.Position = Clamp_Vector(self.Position, (0, 0) + self.Size.elementwise(), pygame.Vector2(self._Game.Get_Screen().get_size()) - (2, 2) * self.Size.elementwise())
 
     def Update(self):
         super().Update()
