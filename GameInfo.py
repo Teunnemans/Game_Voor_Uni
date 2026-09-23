@@ -1,4 +1,6 @@
 import time
+from Functions import Round_Vector
+
 
 # Een class met veel informatie over de gang van het spel.
 class GameInfo:
@@ -34,5 +36,5 @@ class GameInfo:
         # Laat de fps van het spel zien.
         self._Game.Get_Screen().blit(self._Game.Font.render(f"FPS: {round(1/self.Deltatime)}", True, (255, 0, 0)), (0,0))
         # Laat wat statistieken van de speler zien. Lang lijntje code maar is toch debug
-        self._Game.Get_Screen().blit(self._Game.Font.render(f"X: {round(self._Game.Player.X)}, Y: {round(self._Game.Player.Y)}", True, (255, 0, 0)), (0,50))
-        self._Game.Get_Screen().blit(self._Game.Font.render(f"Speed_X: {round(self._Game.Player.Speed_X)}, Speed_Y: {round(self._Game.Player.Speed_Y)}", True, (255, 0, 0)), (0,100))
+        self._Game.Get_Screen().blit(self._Game.Font.render(f"Position: {Round_Vector(self._Game.Player.Position, 0)}", True, (255, 0, 0)), (0,50))
+        self._Game.Get_Screen().blit(self._Game.Font.render(f"Speed: {Round_Vector(self._Game.Player.Speed, 0)}", True, (255, 0, 0)), (0,100))

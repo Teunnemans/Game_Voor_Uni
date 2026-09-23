@@ -12,18 +12,17 @@ class Game:
         #Scherm variabele
         self._Screen = Screen
         # Achtergrond van het spel. TODO maak deze dynamisch
-        self.Background = pygame.transform.scale(pygame.image.load("Art/Background.jpg"), (self._Screen.get_width(), self._Screen.get_height()))
+        self.Background = pygame.transform.scale(pygame.image.load("Art/Background.jpg"), self._Screen.get_size())
         # Lettertype voorgeladen om het spel soepeler te maken.
         self.Font = pygame.font.SysFont("Arial", 20)
         # Speler van het spel, aparte class die boven alle andere logica staat
-        self.Player = Player(self, 250, 250)
+        self.Player = Player(self, pygame.Vector2(50, 50))
 
     # Get-functies van de "beschermde" variabelen
     def Get_Screen(self):
         return self._Screen
     def Get_GameInfo(self):
         return self._GameInfo
-
 
     # Alle logica voor het updaten van het spel
     def Update(self):
@@ -34,7 +33,6 @@ class Game:
     def Draw(self):
         # Screen reset.
         self._Screen.blit(self.Background, (0, 0))
-
         #Player Draw Update
         self.Player.Draw()
         #Alles wat de gameinfo moet tekenen tekent hij hier.
