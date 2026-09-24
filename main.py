@@ -11,6 +11,8 @@ Screen = pygame.display.set_mode((500, 500), pygame.SCALED | pygame.FULLSCREEN)
 #Initialisatie van de game! :)
 _Game = Game(Screen)
 
+print("Welkom bij het programma!!")
+
 # Game loop met exit conditie
 while True:
     for Event in pygame.event.get():
