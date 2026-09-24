@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="Eleganter Frictiesysteem, systeem kan tot 10000 spelers aan - 10FPS">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Entity.py" beforeDir="false" afterPath="$PROJECT_DIR$/Entity.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GameInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/GameInfo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-    </list>
+    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="Fullscreen!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,61 +47,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="4.1856006762219435E-8" />
-      <entry key="MS500" value="0.03654978663234383" />
-      <entry key="S2" value="0.678108294764039" />
-      <entry key="S5" value="1.5514807015627603" />
-      <entry key="S10" value="2.3522534043143737" />
-      <entry key="S30" value="4.6013894072693535" />
-      <entry key="S60" value="8.67705169219773" />
-      <entry key="M2" value="14.966231558161985" />
-      <entry key="M5" value="23.239264926328048" />
-      <entry key="M10" value="27.52651988853901" />
-      <entry key="M15" value="29.222664191090267" />
-      <entry key="M30" value="33.76970942176889" />
-      <entry key="H1" value="81.12703211869943" />
-      <entry key="H2" value="319.5739375083257" />
-      <entry key="H4" value="822.4218765652525" />
-      <entry key="D1" value="2005.3776862335014" />
-      <entry key="W1" value="2355.4633546574682" />
+      <entry key="MS100" value="1.0010830409411384" />
+      <entry key="MS500" value="1.5192751292379336" />
+      <entry key="S2" value="3.602367640305946" />
+      <entry key="S5" value="4.818107424398576" />
+      <entry key="S10" value="5.378652537270548" />
+      <entry key="S30" value="7.086545256222233" />
+      <entry key="S60" value="11.028922165491704" />
+      <entry key="M2" value="18.40286877878799" />
+      <entry key="M5" value="30.01811574041557" />
+      <entry key="M10" value="36.76089355522571" />
+      <entry key="M15" value="39.53615785272632" />
+      <entry key="M30" value="45.2253522055752" />
+      <entry key="H1" value="92.42548712307939" />
+      <entry key="H2" value="329.386622400258" />
+      <entry key="H4" value="831.3589313501512" />
+      <entry key="D1" value="2016.7305221258368" />
+      <entry key="W1" value="2368.18699783116" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0000000032128482" />
-      <entry key="S30" value="1.001475582193549" />
-      <entry key="S60" value="1.0384133075059805" />
-      <entry key="M2" value="1.1959931312724517" />
-      <entry key="M5" value="1.5210703248387436" />
-      <entry key="M10" value="1.721881949617884" />
-      <entry key="M15" value="1.8077757602674742" />
-      <entry key="M30" value="2.3550296971420335" />
-      <entry key="H1" value="9.710754092064827" />
-      <entry key="H2" value="40.54241566846886" />
-      <entry key="H4" value="94.88119067564567" />
-      <entry key="D1" value="205.15842201368815" />
-      <entry key="W1" value="235.48718753025403" />
+      <entry key="MS100" value="4.268867030629036E-308" />
+      <entry key="MS500" value="3.3578595393690514E-62" />
+      <entry key="S2" value="4.280708266704653E-16" />
+      <entry key="S5" value="7.122070240729365E-7" />
+      <entry key="S10" value="8.439235917127584E-4" />
+      <entry key="S30" value="0.09464000188921527" />
+      <entry key="S60" value="0.31921804447615115" />
+      <entry key="M2" value="0.6631125987216748" />
+      <entry key="M5" value="1.201414118098514" />
+      <entry key="M10" value="1.5302947634980018" />
+      <entry key="M15" value="1.6710612607616449" />
+      <entry key="M30" value="2.26422871721041" />
+      <entry key="H1" value="9.521709111652923" />
+      <entry key="H2" value="40.14584454609686" />
+      <entry key="H4" value="94.41600370800457" />
+      <entry key="D1" value="204.99043548037244" />
+      <entry key="W1" value="235.459632124281" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3469185777561521E-5" />
-      <entry key="MS500" value="0.11890505296765495" />
-      <entry key="S2" value="1.0978900116900892" />
-      <entry key="S5" value="2.2159209862505187" />
-      <entry key="S10" value="3.1507264341845587" />
-      <entry key="S30" value="5.5115368289500095" />
-      <entry key="S60" value="9.65231273340661" />
-      <entry key="M2" value="16.118666035476586" />
-      <entry key="M5" value="24.73693664087614" />
-      <entry key="M10" value="29.235180264290427" />
-      <entry key="M15" value="31.021212205208897" />
-      <entry key="M30" value="36.11898831705675" />
-      <entry key="H1" value="90.828744799244" />
-      <entry key="H2" value="360.0990880117856" />
-      <entry key="H4" value="917.2826252224282" />
-      <entry key="D1" value="2210.528461114095" />
-      <entry key="W1" value="2590.949277454969" />
+      <entry key="MS100" value="0.9470893926764222" />
+      <entry key="MS500" value="1.5031986890289009" />
+      <entry key="S2" value="3.5930648238357614" />
+      <entry key="S5" value="4.813118324587633" />
+      <entry key="S10" value="5.3765344258223635" />
+      <entry key="S30" value="7.171338022335047" />
+      <entry key="S60" value="11.327910587549175" />
+      <entry key="M2" value="19.041315570775367" />
+      <entry key="M5" value="31.200804216221787" />
+      <entry key="M10" value="38.2793078920449" />
+      <entry key="M15" value="41.19860071928069" />
+      <entry key="M30" value="47.484006635893074" />
+      <entry key="H1" value="101.93830798387171" />
+      <entry key="H2" value="369.5153591734768" />
+      <entry key="H4" value="925.7545875031276" />
+      <entry key="D1" value="2221.7133157724284" />
+      <entry key="W1" value="2603.6453652331606" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -189,7 +184,7 @@
       <workItem from="1790175890298" duration="2000" />
       <workItem from="1790234073308" duration="606000" />
       <workItem from="1790245560179" duration="205000" />
-      <workItem from="1790247152099" duration="1189000" />
+      <workItem from="1790247152099" duration="1634000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit :)">
       <option name="closed" value="true" />
@@ -247,7 +242,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790175583658</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fullscreen!">
+      <option name="closed" value="true" />
+      <created>1790258062667</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1790258062667</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -261,13 +264,14 @@
     <MESSAGE value="Meer basis, goede documentatie en speler movement met accleratie yeah" />
     <MESSAGE value="Vectorsysteem. Stukken effiecienter(Tot wel 50% !!)" />
     <MESSAGE value="Eleganter Frictiesysteem, systeem kan tot 10000 spelers aan - 10FPS" />
-    <option name="LAST_COMMIT_MESSAGE" value="Eleganter Frictiesysteem, systeem kan tot 10000 spelers aan - 10FPS" />
+    <MESSAGE value="Fullscreen!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fullscreen!" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Game.coverage" NAME="Game Coverage Results" MODIFIED="1789998720607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Game_Uni_Real$GameInfo.coverage" NAME="GameInfo Coverage Results" MODIFIED="1790021778754" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Entity.coverage" NAME="Entity Coverage Results" MODIFIED="1790169516184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Game_Uni_Real$main.coverage" NAME="main Coverage Results" MODIFIED="1790257881231" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Game_Uni_Real$main.coverage" NAME="main Coverage Results" MODIFIED="1790258008214" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Player.coverage" NAME="Player Coverage Results" MODIFIED="1790234641785" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
