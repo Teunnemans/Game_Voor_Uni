@@ -4,14 +4,17 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="Fullscreen!" />
+    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="Klaarmaken voor kloon naar gitlab">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="18" />
+    <option name="cachedIndexableFilesCount" value="25" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -30,6 +33,22 @@
     &quot;assignee&quot;: &quot;Teunnemans&quot;
   }
 }</component>
+  <component name="GitLabMergeRequestFiltersHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPENED",
+    "assignee": {
+      "type": "org.jetbrains.plugins.gitlab.mergerequest.ui.filters.GitLabMergeRequestsFiltersValue.MergeRequestsMemberFilterValue.MergeRequestsAssigneeFilterValue",
+      "username": "tweijdener",
+      "fullname": "Teun Weijdener"
+    }
+  }
+}]]></component>
+  <component name="GitLabMergeRequestsSettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "first": "git@gitlab.tudelft.nl:wb1641_t2b_games/2026/6788009.git",
+    "second": "b134423b-5855-42f1-a715-7a2ec9064b60"
+  }
+}]]></component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Teunnemans/Game_Voor_Uni.git&quot;,
@@ -47,61 +66,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0010830409411384" />
-      <entry key="MS500" value="1.5192751292379336" />
-      <entry key="S2" value="3.602367640305946" />
-      <entry key="S5" value="4.818107424398576" />
-      <entry key="S10" value="5.378652537270548" />
-      <entry key="S30" value="7.086545256222233" />
-      <entry key="S60" value="11.028922165491704" />
-      <entry key="M2" value="18.40286877878799" />
-      <entry key="M5" value="30.01811574041557" />
-      <entry key="M10" value="36.76089355522571" />
-      <entry key="M15" value="39.53615785272632" />
-      <entry key="M30" value="45.2253522055752" />
-      <entry key="H1" value="92.42548712307939" />
-      <entry key="H2" value="329.386622400258" />
-      <entry key="H4" value="831.3589313501512" />
-      <entry key="D1" value="2016.7305221258368" />
-      <entry key="W1" value="2368.18699783116" />
+      <entry key="MS100" value="1.6624918231070573" />
+      <entry key="MS500" value="3.048214956690792" />
+      <entry key="S2" value="3.71476416940445" />
+      <entry key="S5" value="3.8814228166370692" />
+      <entry key="S10" value="3.9399356146790123" />
+      <entry key="S30" value="3.990679438196071" />
+      <entry key="S60" value="4.0962505692974815" />
+      <entry key="M2" value="4.5145434914806035" />
+      <entry key="M5" value="9.11803306030061" />
+      <entry key="M10" value="20.604456594301986" />
+      <entry key="M15" value="29.763556891592305" />
+      <entry key="M30" value="46.43599713587287" />
+      <entry key="H1" value="93.43971629345351" />
+      <entry key="H2" value="313.74632500775635" />
+      <entry key="H4" value="804.9429618053904" />
+      <entry key="D1" value="2020.002133545043" />
+      <entry key="W1" value="2388.697596604729" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="4.268867030629036E-308" />
-      <entry key="MS500" value="3.3578595393690514E-62" />
-      <entry key="S2" value="4.280708266704653E-16" />
-      <entry key="S5" value="7.122070240729365E-7" />
-      <entry key="S10" value="8.439235917127584E-4" />
-      <entry key="S30" value="0.09464000188921527" />
-      <entry key="S60" value="0.31921804447615115" />
-      <entry key="M2" value="0.6631125987216748" />
-      <entry key="M5" value="1.201414118098514" />
-      <entry key="M10" value="1.5302947634980018" />
-      <entry key="M15" value="1.6710612607616449" />
-      <entry key="M30" value="2.26422871721041" />
-      <entry key="H1" value="9.521709111652923" />
-      <entry key="H2" value="40.14584454609686" />
-      <entry key="H4" value="94.41600370800457" />
-      <entry key="D1" value="204.99043548037244" />
-      <entry key="W1" value="235.459632124281" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="9.520067689840961E-209" />
+      <entry key="S5" value="6.186656657451418E-84" />
+      <entry key="S10" value="2.487299076750723E-42" />
+      <entry key="S30" value="1.3569058055888175E-14" />
+      <entry key="S60" value="1.2087177867139406E-7" />
+      <entry key="M2" value="4.080430821963228E-4" />
+      <entry key="M5" value="0.06242236620557528" />
+      <entry key="M10" value="0.34881796184348574" />
+      <entry key="M15" value="0.6235551493595513" />
+      <entry key="M30" value="1.3831253577048812" />
+      <entry key="H1" value="7.441929205720746" />
+      <entry key="H2" value="35.491627185465724" />
+      <entry key="H4" value="88.77450727539805" />
+      <entry key="D1" value="202.89625954295695" />
+      <entry key="W1" value="235.1144825373542" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9470893926764222" />
-      <entry key="MS500" value="1.5031986890289009" />
-      <entry key="S2" value="3.5930648238357614" />
-      <entry key="S5" value="4.813118324587633" />
-      <entry key="S10" value="5.3765344258223635" />
-      <entry key="S30" value="7.171338022335047" />
-      <entry key="S60" value="11.327910587549175" />
-      <entry key="M2" value="19.041315570775367" />
-      <entry key="M5" value="31.200804216221787" />
-      <entry key="M10" value="38.2793078920449" />
-      <entry key="M15" value="41.19860071928069" />
-      <entry key="M30" value="47.484006635893074" />
-      <entry key="H1" value="101.93830798387171" />
-      <entry key="H2" value="369.5153591734768" />
-      <entry key="H4" value="925.7545875031276" />
-      <entry key="D1" value="2221.7133157724284" />
-      <entry key="W1" value="2603.6453652331606" />
+      <entry key="MS100" value="1.5381514972523487" />
+      <entry key="MS500" value="2.945543811370746" />
+      <entry key="S2" value="3.674778594002055" />
+      <entry key="S5" value="3.863856463168567" />
+      <entry key="S10" value="3.930870520455007" />
+      <entry key="S30" value="3.987464762750446" />
+      <entry key="S60" value="4.094080419716088" />
+      <entry key="M2" value="4.513144247215599" />
+      <entry key="M5" value="9.178104547061475" />
+      <entry key="M10" value="20.949564243014606" />
+      <entry key="M15" value="30.383118941701596" />
+      <entry key="M30" value="47.81525904301551" />
+      <entry key="H1" value="100.87444843969011" />
+      <entry key="H2" value="349.22269686459725" />
+      <entry key="H4" value="893.6982703486352" />
+      <entry key="D1" value="2222.890817943094" />
+      <entry key="W1" value="2623.810814642593" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -136,24 +155,27 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
     &quot;junie.plugin.stays.banner.dismissed&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Teunw/PycharmProjects/Game_Uni_Real&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Teunw\PycharmProjects\Game_Uni_Real" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Teunw\PycharmProjects\Game_Uni_Real" />
       <recent name="C:\Users\Teunw\PycharmProjects\Game_Uni_Real\Code" />
@@ -184,7 +206,8 @@
       <workItem from="1790175890298" duration="2000" />
       <workItem from="1790234073308" duration="606000" />
       <workItem from="1790245560179" duration="205000" />
-      <workItem from="1790247152099" duration="1634000" />
+      <workItem from="1790247152099" duration="2065000" />
+      <workItem from="1790261676868" duration="961000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit :)">
       <option name="closed" value="true" />
@@ -250,7 +273,15 @@
       <option name="project" value="LOCAL" />
       <updated>1790258062667</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Klaarmaken voor kloon naar gitlab">
+      <option name="closed" value="true" />
+      <created>1790258453124</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1790258453124</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,7 +296,8 @@
     <MESSAGE value="Vectorsysteem. Stukken effiecienter(Tot wel 50% !!)" />
     <MESSAGE value="Eleganter Frictiesysteem, systeem kan tot 10000 spelers aan - 10FPS" />
     <MESSAGE value="Fullscreen!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fullscreen!" />
+    <MESSAGE value="Klaarmaken voor kloon naar gitlab" />
+    <option name="LAST_COMMIT_MESSAGE" value="Klaarmaken voor kloon naar gitlab" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Game.coverage" NAME="Game Coverage Results" MODIFIED="1789998720607" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
