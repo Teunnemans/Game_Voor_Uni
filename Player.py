@@ -29,13 +29,13 @@ class Player(Entity):
             Direction = Direction.normalize()
 
         # Elementwise omdat hij anders het inproduct berekent en de snelheid omzet naar een scalar. Kostte mij veel debugtijd
-        self.Speed += (Direction * self.Acceleration.elementwise() * self._Game.Get_GameInfo().Deltatime)
+        self.Speed += (Direction * self.Acceleration.elementwise() * self._Game.Deltatime)
         # Frictie
-        self.Speed *= max(0, 1 - self._Game.Get_GameInfo().Friction * self._Game.Get_GameInfo().Deltatime)
+        self.Speed *= max(0, 1 - self._Game.Get_GameInfo().Friction * self._Game.Deltatime)
         self.Speed = Clamp_Vector(self.Speed, -self.MaxSpeed, self.MaxSpeed) # Houdt de snelheid van de spelers binnen de kaders van het spel.
 
         # Hier oefent de snelheid de verplaatsing uit als functie van de acceleratie.
-        self.Position += (self.Speed * self._Game.Get_GameInfo().Deltatime)
+        self.Position += (self.Speed * self._Game.Deltatime)
         # Houdt de speler binnen de kaders van het spel.
         self.Position = Clamp_Vector(self.Position, (0, 0) + self.Size.elementwise(), pygame.Vector2(self._Game.Get_Screen().get_size()) - (2, 2) * self.Size.elementwise())
 

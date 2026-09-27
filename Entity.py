@@ -36,4 +36,3 @@ class Entity:
     def Draw(self):
         if self.Visible:
             self._Game.Get_Screen().blit(self.Sprite, self.Position)
-            self._Game.Get_Screen().blit(self.Sprite, self.Position)
