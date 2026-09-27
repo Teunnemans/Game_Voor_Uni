@@ -1,6 +1,6 @@
 import pygame
-from Entity import Entity
-from Functions import Clamp_Vector
+from Core.Entities.Entity import Entity
+from Core.Functions import Clamp_Vector
 
 # Speler class, handlet input en is centraal voor het spel. Is er maar 1 van in het spel.
 class Player(Entity):

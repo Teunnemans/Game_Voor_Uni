@@ -1,21 +1,17 @@
-import pygame
-import time
-
-from Functions import Round_Vector
-from Player import Player
-
-
 # Een class met veel informatie over de gang van het spel.
 class GameInfo:
     def __init__(self, Game):
         self._Game = Game # Verwijzing naar boven.
 
-        # Game properties
+        # Core properties
         self.Friction = 7
 
         # Een grote lijst met allemaal Entity-Class objecten. Kan hier iteratief alle Draw() en Update() functies uitvoeren
         # Speler staat hier NIET in, die staat een laag hoger, in Game, omdat er maar 1 speler is.
         self.EntityList = []
+
+        # Basis voor score hier.
+        self.Score = 0
 
     # Alle logica voor het updaten van het spel
     def Update(self):

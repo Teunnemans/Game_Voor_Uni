@@ -1,7 +1,8 @@
 # Dit is een python bestand met een eigengeschreven UI_Manager die allemaal ui elements onderhoud en verzamelt.
 import pygame
 import time
-from Functions import Round_Vector
+from Core.Functions import Round_Vector
+from Core.UI.UI_Types import Image, Text_Element
 
 class UI_Manager:
     def __init__(self, Game):
@@ -62,48 +63,5 @@ class UI_Manager:
 
         # Daadwerkelijke update functie
         for Element in self.Elements:
-            Element.Update()
-
-
-# Basis klasse voor alle UI elementen
-class UI_Element:
-    def __init__(self, Name, Sprite, Position, Visible = True):
-
-        # Deze moet altijd ingevuld worden door de Class die deze inherit. Een textinput vult natuurlijk iets
-        # Anders aan dan een knop.
-        self.Sprite = Sprite
-        # Naam zodat hij ook weer verwijderd kan worden
-        self.Name = Name
-        # Simpele positie
-        self.Position = pygame.Vector2(Position)
-        # Visible is zichtbaar, actief is interactief/klikbaar(bijvoorbeeld)
-        self.Visible = Visible
-
-    # Waar moet ie op tekenen?
-    def Draw(self, Screen):
-        Screen.blit(self.Sprite, self.Position)
-    def Update(self):
-        pass
-
-class Image(UI_Element):
-    def __init__(self, Name, Image, Position,  Visible=True):
-        super().__init__(Name, Image, Position, Visible)
-
-    def Draw(self, Screen):
-        Screen.blit(self.Sprite, self.Position)
-
-# Simpel text element :) Kan gebruikt worden voor alles/
-class Text_Element(UI_Element):
-    def __init__(self, Name, Text, Position, Font= None, Color=(255, 255, 255), Visible=True):
-
-        # Alles voor het renderen van text
-        self.Text = Text
-        self.Font = Font
-        self.Color = Color
-
-        super().__init__(Name, Font.render(self.Text, True, Color), Position, Visible)
-
-    def Draw(self, Screen):
-        # Rerenderd de sprite voor als de tekst veranderd is.
-        self.Sprite = self.Font.render(self.Text, True, self.Color)
-        Screen.blit(self.Sprite, self.Position)
+            if Element.Visible:
+                Element.Update()

@@ -1,8 +1,8 @@
 import pygame
 import time
-from GameInfo import GameInfo
-from Player import Player
-from UI import UI_Manager
+from Core.GameInfo import GameInfo
+from Core.Entities.Player import Player
+from Core.UI.UI_Manager import UI_Manager
 
 
 # Een abstractielaag om de code in Main.py simpel te houden,
@@ -28,8 +28,6 @@ class Game:
 
         # Achtergrond van het spel. TODO maak deze dynamisch
         self.Background = pygame.transform.scale(pygame.image.load("Art/Background.jpg"), self._Screen.get_size())
-        # Lettertype voorgeladen om het spel soepeler te maken.
-        self.Font = pygame.font.SysFont("Arial", 20)
         # Speler van het spel, aparte class die boven alle andere logica staat
         self.Player = Player(self, pygame.Vector2(50, 50))
 
