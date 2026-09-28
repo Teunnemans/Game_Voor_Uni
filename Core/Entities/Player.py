@@ -15,8 +15,6 @@ class Player(Entity):
 
     # Input die de speler verplaatst aan de hand van een paar variabelen zoals acceleratie etc.
     def Handle_Movement(self):
-        # TODO Uitvogelen hoe mijn trekkracht moet werken
-        # Input die de speler verplaatst aan de hand van een paar variabelen zoals acceleratie etc.
         Keys = pygame.key.get_pressed()
         # Coole compactere versie van de inputregelaar die ik eerst had. Maakt van Direction een richtingvector die gebruikt
         # wordt bij het berekenen van de snelheid
@@ -34,13 +32,16 @@ class Player(Entity):
         self.Speed *= max(0, 1 - self._Game.Get_GameInfo().Friction * self._Game.Deltatime)
         self.Speed = Clamp_Vector(self.Speed, -self.MaxSpeed, self.MaxSpeed) # Houdt de snelheid van de spelers binnen de kaders van het spel.
 
+        # Trekkracht, "Remt" de auto af als hij niet actief versnelt.
+        self.Speed += pygame.Vector2(0, 750) * self._Game.Deltatime
+
         # Hier oefent de snelheid de verplaatsing uit als functie van de acceleratie.
         self.Position += (self.Speed * self._Game.Deltatime)
         # Houdt de speler binnen de kaders van het spel.
         self.Position = Clamp_Vector(self.Position, (0, 0) + self.Size.elementwise(), pygame.Vector2(self._Game.Get_Screen().get_size()) - (2, 2) * self.Size.elementwise())
 
-    def Update(self):
-        super().Update()
+    def Update(self, Eventstack):
+        super().Update(Eventstack)
         self.Handle_Movement()
 
     def Draw(self):

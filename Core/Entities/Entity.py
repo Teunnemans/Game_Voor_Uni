@@ -10,7 +10,7 @@ class Entity:
         # Een unieke code Specifiek tot DIE entity, gebruikt voor identificatie.
         self.ID = uuid.uuid4()
 
-        # "Plaatje" van de entity, TODO Vervangen voor een animatiesysteem
+        # "Plaatje" van de entity, TODO Vervangen voor een animatiesysteem (OBV states die de speler aan kan nemen)
         self.Sprite = Game_Sprite
         # "Positie" van de entity
         self.Position = Position
@@ -20,7 +20,7 @@ class Entity:
         # Draaiing in graden TODO Draaing inplementeren
         self.Rotation = Rotation
 
-        self.Visible = True
+        self.Visible = Visible
 
     # TODO Collision handling, Systeem op basis van een tile-systeem die aanpasbare resolutie heeft.
     def Handle_Collision(self):
@@ -28,7 +28,7 @@ class Entity:
 
     # Zelf in te vullen, wil je dat een entity iets anders doet/ander gedrag heeft? Dan kan dat.
     # Dit is in ieder geval standaard gedrag.
-    def Update(self):
+    def Update(self, Eventstack):
         # Nieuwe Rect
         self.Rect = pygame.Rect(self.Position, self.Size)
     # Ook zelf in te vullen, misschien wil je wel helemaal niet dat de entity getekend wordt, kan ook.

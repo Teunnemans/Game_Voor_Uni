@@ -11,16 +11,14 @@ _Game = Game(Screen)
 
 # Core loop met exit conditie
 while True:
-    for Event in pygame.event.get():
-        # Quit bij wegklikken
-        if Event.type == pygame.QUIT:
-            sys.exit()
-        # Quit ook bij backspace
-        elif Event.type == pygame.KEYDOWN:
-            if Event.key == pygame.K_BACKSPACE:
-                sys.exit()
-    # Update ALLES, Tekent ALLES
-    _Game.Update()
+    # Haalt eens per frame alle Events op
+    Eventstack = pygame.event.get()
+    for Event in Eventstack:
+        # Quit bij wegklikken, ook bij backspace
+        if Event.type == pygame.QUIT or (Event.type == pygame.KEYDOWN and Event.key == pygame.K_BACKSPACE):
+            sys.exit(); pygame.quit()
+    # Update ALLES, Tekent ALLES Geeft eventstack mee, omdat het roepen van die functie de queue cleart. Dat wil je niet.
+    _Game.Update(Eventstack)
     _Game.Draw()
     # Volgende frame
     pygame.display.flip()
