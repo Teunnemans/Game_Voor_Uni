@@ -32,7 +32,7 @@ class Game:
         # Achtergrond van het spel. TODO maak deze dynamisch
         self.Background = pygame.transform.scale(pygame.image.load("Art/Background.jpg"), self._Screen.get_size())
         # Speler van het spel, aparte class die boven alle andere logica staat
-        self.Player = Player(self, pygame.Vector2(50, 50))
+        self.Player = Player(self, pygame.Vector2(250, 250))
 
     # Deltatime update
     def Update_Deltatime(self):
@@ -55,7 +55,7 @@ class Game:
         # Update de deltatime
         self.Update_Deltatime()
 
-        # Pauze logica, gaat op pauze zodra je esc of p indrukt. Is een toggle
+        # Pauze logica, gaat op pauze zodra je esc of p indrukt. Is een toggle TODO VERVANGEN VOOR EVENTSTACK IMPLEMENTATIE
         Keys = pygame.key.get_pressed()
         if Keys[pygame.K_ESCAPE] or Keys[pygame.K_p]:
             if self.ShouldToggle:
@@ -71,10 +71,7 @@ class Game:
         self._UI_Manager.Update(Eventstack) # UI Update, altijd apart van Paused
     # Alle logica voor het tekenen op het scherm.
     def Draw(self):
-        self._Screen.blit(self.Background, (0, 0)) # Screen reset.
-
+        self._Screen.blit(self.Background, (0, 0)) # Screen reset. #TODO VERVANGEN VOOR EEN DYNAMISCHE ACHTERGROND
         self.Player.Draw() #Player Draw Update
-
-        self._GameInfo.Draw() #Alles wat de gameinfo moet tekenen tekent hij hier.
-
+        self._GameInfo.Draw() #Alles wat de gameinfo moet tekenen tekent hij hier. Eigenlijk alle entities
         self._UI_Manager.Draw(self._Screen) # UI Draw

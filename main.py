@@ -15,8 +15,9 @@ while True:
     Eventstack = pygame.event.get()
     for Event in Eventstack:
         # Quit bij wegklikken, ook bij backspace
-        if Event.type == pygame.QUIT or (Event.type == pygame.KEYDOWN and Event.key == pygame.K_BACKSPACE):
+        if Event.type == pygame.QUIT or (Event.type == pygame.KEYDOWN and Event.key == pygame.K_BACKSPACE) or (Event.type == pygame.USEREVENT and Event.dict["Type"] == "Button_Pressed" and Event.dict["Name"] == "Quit"):
             sys.exit(); pygame.quit()
+
     # Update ALLES, Tekent ALLES Geeft eventstack mee, omdat het roepen van die functie de queue cleart. Dat wil je niet.
     _Game.Update(Eventstack)
     _Game.Draw()

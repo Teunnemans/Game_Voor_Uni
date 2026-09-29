@@ -8,7 +8,7 @@ class Image(UI_Element):
         super().__init__(Root, Name, Image, Position, Visible)
 
 
-# Simpel text element :) Kan gebruikt worden voor alles/
+# Simpel text element :) Kan gebruikt worden voor alles, zoals bijvoorbeeld IN een button, TODO VOEG ITALIC EN BOLD TOE!
 class Text_Element(UI_Element):
     def __init__(self,Root, Name, Text, Position, Font= None, Color=(255, 255, 255), Visible=True):
 

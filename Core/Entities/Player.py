@@ -13,8 +13,10 @@ class Player(Entity):
         # Hoe snel versnelt de speler?
         self.Acceleration = pygame.Vector2(5000, 5000)
 
+        self.CollidingList = []
+
     # Input die de speler verplaatst aan de hand van een paar variabelen zoals acceleratie etc.
-    def Handle_Movement(self):
+    def Update_Movement(self):
         Keys = pygame.key.get_pressed()
         # Coole compactere versie van de inputregelaar die ik eerst had. Maakt van Direction een richtingvector die gebruikt
         # wordt bij het berekenen van de snelheid
@@ -40,9 +42,19 @@ class Player(Entity):
         # Houdt de speler binnen de kaders van het spel.
         self.Position = Clamp_Vector(self.Position, (0, 0) + self.Size.elementwise(), pygame.Vector2(self._Game.Get_Screen().get_size()) - (2, 2) * self.Size.elementwise())
 
+    # Player side collision handling
+    def Update_Collision(self):
+        self.CollidingList = []
+        for Entity in self._Game.Get_GameInfo().EntityList:
+                if Entity.Rect.colliderect(self.Rect):
+                    # Alle entities hebben expliciet uitgeschreven gedrag voor wat een collision zou moeten doen
+                    Entity.Handle_Collision(self)
+                    self.CollidingList.append(Entity)
+
     def Update(self, Eventstack):
         super().Update(Eventstack)
-        self.Handle_Movement()
+        self.Update_Movement()
+        self.Update_Collision()
 
     def Draw(self):
         super().Draw()

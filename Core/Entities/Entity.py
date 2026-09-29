@@ -22,11 +22,12 @@ class Entity:
 
         self.Visible = Visible
 
-    # TODO Collision handling, Systeem op basis van een tile-systeem die aanpasbare resolutie heeft.
-    def Handle_Collision(self):
+    # Lege collision functie die aangeroepen wordt als de speler tegen de collider aanloopt. Als deze niet aangevult wordt
+    # door een andere class dan is hij niet collidable
+    def Handle_Collision(self, Other_Entity):
         pass
 
-    # Zelf in te vullen, wil je dat een entity iets anders doet/ander gedrag heeft? Dan kan dat.
+    # Zelf in te vullen, wil je dat een entity iets anders doet/ander gedrag heeft? Dan kan dat. roep wel eerst super.update() aan
     # Dit is in ieder geval standaard gedrag.
     def Update(self, Eventstack):
         # Nieuwe Rect
