@@ -37,3 +37,7 @@ class Entity:
     def Draw(self):
         if self.Visible:
             self._Game.Get_Screen().blit(self.Sprite, self.Position)
+
+    # Verwijdert zichzelf uit de gameinfo
+    def Kill(self):
+        self._Game.Get_GameInfo().Remove_Entity(self)
