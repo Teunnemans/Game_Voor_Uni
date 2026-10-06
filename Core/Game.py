@@ -25,6 +25,9 @@ class Game:
         self.Deltatime = self.Old_Time = time.perf_counter()
         self.Clock = pygame.time.Clock()
 
+        # ScoreKeeping
+        self.Attempts = [{"Score":0, "Time_Survived":0}]
+
     # Deltatime update, update ook de pygame clock
     def Update_Deltatime(self):
         New_Time = time.perf_counter()
@@ -48,8 +51,6 @@ class Game:
                 return Constants.Images.MainMenu
             case Game_State.In_Game:
                 return self._GameInfo.Background
-        # Default achtergrond
-        return Constants.Images.MainMenu
 
     # Set functie van de State variable
     def Set_State(self, New_State):

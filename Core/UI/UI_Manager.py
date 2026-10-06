@@ -35,6 +35,8 @@ class UI_Manager(UI_Group):
         # Debug statements updaten(Dit zou ook buiten de manager kunnen gebeuren dat is prima)
         if self.Game.Debug: Update_Debug_Overlay(self)
 
+        #TODO Game UI OVERLAY TOEVOEGEN
+
         # Daadwerkelijke update functie, update hoe dan ook heel de UI. Niet mega efficient, maar met weinig ui prima
         for Element in self.Elements: Element.Update(Eventstack)
 

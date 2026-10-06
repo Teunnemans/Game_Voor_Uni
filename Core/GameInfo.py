@@ -78,3 +78,8 @@ class GameInfo:
 
     def Remove_Entity(self, Entity):
         self.EntityList.remove(Entity)
+
+    # Terug naar het menu.
+    def End_Game(self):
+        self._Game.Attempts.append({"Score" : self.Score, "Time_Survived" : self.Time_Since_Game_Start})
+        self._Game.Set_State(Constants.Game_State.Main_Menu)
