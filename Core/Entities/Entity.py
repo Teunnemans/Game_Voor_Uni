@@ -2,7 +2,7 @@ import pygame, uuid
 # Coole entity class die een basis vormt voor objecten in het spel. Bevat veel informatie
 # Die gebruikt kan worden bij andere classes waar hij op doorbouwt.
 class Entity:
-    def __init__(self, Game_Sprite: pygame.Surface, _Game, Position: pygame.Vector2 = pygame.Vector2(0, 0), Rotation: int = 0, Visible: bool = True):
+    def __init__(self, Game_Sprite: pygame.Surface, _Game, Position: pygame.Vector2 = pygame.Vector2(0, 0), Visible: bool = True):
         # Een reference naar de Globale _Game variable. Niets in aanpassen,
         # maar kan wel informatie opvragen en functies uitvoeren
         self._Game = _Game
@@ -17,8 +17,6 @@ class Entity:
         # Functie voor de collision van de Entity, een rect is een vierkant.
         self.Size = pygame.Vector2(Game_Sprite.get_size())
         self.Rect = pygame.Rect(self.Position, self.Size)
-        # Draaiing in graden TODO Draaing inplementeren
-        self.Rotation = Rotation
 
         self.Visible = Visible
 
@@ -37,7 +35,3 @@ class Entity:
     def Draw(self):
         if self.Visible:
             self._Game.Get_Screen().blit(self.Sprite, self.Position)
-
-    # Verwijdert zichzelf uit de gameinfo
-    def Kill(self):
-        self._Game.Get_GameInfo().Remove_Entity(self)

@@ -31,7 +31,7 @@ class Game:
         # Verschil in tijd sinds laatste frame
         self.Deltatime = New_Time - self.Old_Time
         self.Old_Time = New_Time
-
+        # python clock update
         self.Clock.tick()
 
     # Get-functies van de "beschermde" variabelen
@@ -61,8 +61,7 @@ class Game:
         self._GameInfo = GameInfo(self)
     # Reset functie, zorgt ervoor dat de gameinfo en ui_manager opnieuw gestart worden
     def Reset(self):
-        self.Set_State(Game_State.In_Game)
-        self._GameInfo = GameInfo(self)
+        self.Start_Game()
 
     # Alle logica voor het updaten van het spel
     def Update(self, Eventstack):

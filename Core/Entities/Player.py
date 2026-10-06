@@ -1,11 +1,13 @@
 import pygame
+
+from Core import Constants
 from Core.Entities.Entity import Entity
 from Core.Functions import Clamp_Vector
 
 # Speler class, handlet input en is centraal voor het spel. Is er maar 1 van in het spel.
 class Player(Entity):
-    def __init__(self, _Game, Position: pygame.Vector2 = pygame.Vector2(0,0), Rotation: int = 0):
-        super().__init__(pygame.transform.scale(pygame.image.load("Art/Player.png"), (50, 50)), _Game, Position, Rotation)
+    def __init__(self, Sprite,  _Game, Position: pygame.Vector2 = pygame.Vector2(0,0)):
+        super().__init__(Sprite, _Game, Position)
 
         # Hoe snel beweegt de speler?
         self.MaxSpeed = pygame.Vector2(250, 250)
@@ -15,6 +17,11 @@ class Player(Entity):
 
         self.CollidingList = []
 
+        # Alle collider logica.
+        self.Hit_Interval = 3 # 3 Seconden immuun na hit
+        self.Hit_Timer = 0
+        self.Hit = False
+        self.Lives = 5 # 5 Levens als standaard
     # Input die de speler verplaatst aan de hand van een paar variabelen zoals acceleratie etc.
     def Update_Movement(self):
         Keys = pygame.key.get_pressed()
@@ -40,7 +47,7 @@ class Player(Entity):
         # Hier oefent de snelheid de verplaatsing uit als functie van de acceleratie.
         self.Position += (self.Speed * self._Game.Deltatime)
         # Houdt de speler binnen de kaders van het spel.
-        self.Position = Clamp_Vector(self.Position, (0, 0) + self.Size.elementwise(), pygame.Vector2(self._Game.Get_Screen().get_size()) - (2, 2) * self.Size.elementwise())
+        self.Position = Clamp_Vector(self.Position, pygame.Vector2(0, 0), pygame.Vector2(self._Game.Get_Screen().get_size()) - (1, 1) * self.Size.elementwise())
 
     # Player side collision handling
     def Update_Collision(self):
@@ -51,12 +58,24 @@ class Player(Entity):
                     Entity.Handle_Collision(self)
                     self.CollidingList.append(Entity)
 
+    # Hit update handling
+    def Update_Hit(self):
+        self.Hit_Timer += self._Game.Deltatime
+        if self.Hit_Timer > self.Hit_Interval:
+            # Kan weer geraakt worden
+            self.Hit = False
+            self.Hit_Timer = 0
+
     def Update(self, Eventstack):
-        super().Update(Eventstack)
-        self.Update_Movement()
-        self.Update_Collision()
+        if self.Lives > 0:
+            super().Update(Eventstack)
+            self.Update_Movement()
+            self.Update_Collision()
+            self.Update_Hit()
+        else:
+            print("Wallahi je bent dood")
+            # TODO DOOD FUNCTIONALITEIT
 
     def Draw(self):
         super().Draw()
-        pass
 

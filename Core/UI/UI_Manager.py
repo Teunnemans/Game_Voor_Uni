@@ -3,7 +3,8 @@ import pygame
 from Core.Functions import Round_Vector
 from Core.UI.UI_Element import UI_Group
 from Core.UI.UI_Types import Image, Text_Element, Button
-from Core.Constants import Game_State, Find_Center
+from Core.Constants import Game_State
+from Core.Functions import Find_Center
 
 class UI_Manager(UI_Group):
     def __init__(self, Game):
@@ -85,7 +86,9 @@ def Generate_Debug_Overlay(UIManager):
     DebugUi.Add_Element(Text_Element(DebugUi, "Position", f"Position:", (0, 50), UIManager.Standard_Font, (255, 0, 0)))
     DebugUi.Add_Element(Text_Element(DebugUi, "Speed", f"Speed:", (0, 70), UIManager.Standard_Font, (255, 0, 0)))
     DebugUi.Add_Element(Text_Element(DebugUi, "Colliding", f"Colliding:", (0, 90), UIManager.Standard_Font, (255, 0, 0)))
-    DebugUi.Add_Element(Text_Element(DebugUi, "State", f"State:", (0, 110), UIManager.Standard_Font, (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "Lives", f"Lives:", (0, 110), UIManager.Standard_Font, (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "Score", f"Score:", (0, 130), UIManager.Standard_Font, (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "Entitylist", f"Entitylist:", (0, 150), UIManager.Standard_Font, (255, 0, 0)))
 
 
     return DebugUi
@@ -100,4 +103,6 @@ def Update_Debug_Overlay(UiManager):
         DebugUi.Get_Element("Colliding").Text = f"Colliding: {UiManager.Game.Get_GameInfo().Player.CollidingList}"
     else:
         DebugUi.Get_Element("Colliding").Text = f"Colliding:"
-    DebugUi.Get_Element("State").Text = f"State: {UiManager.Game.Get_State()}"
+    DebugUi.Get_Element("Lives").Text = f"Lives: {UiManager.Game.Get_GameInfo().Player.Lives}"
+    DebugUi.Get_Element("Score").Text = f"Score: {round(UiManager.Game.Get_GameInfo().Score)}"
+    DebugUi.Get_Element("Entitylist").Text = f"Entitylist: {len(UiManager.Game.Get_GameInfo().EntityList)}"

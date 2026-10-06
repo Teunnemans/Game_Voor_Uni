@@ -6,7 +6,8 @@ from Core.Entities.Player import Player
 # ENTITY OM TE KIJKEN HOE COLLISIONS ZOUDEN WERKEN
 class TestEntity(Entity):
     def __init__(self, Game_Sprite: pygame.Surface, _Game, Position: pygame.Vector2 = pygame.Vector2(0, 0), Rotation: int = 0, Visible: bool = True):
-        super().__init__(Game_Sprite, _Game, Position, Rotation, Visible)
+        super().__init__(Game_Sprite, _Game, Position, Visible)
+        self.Blink_Timer = 0
 
     def Handle_Collision(self, Other_Entity: Player):
         # Overlap berekenen
@@ -36,6 +37,15 @@ class TestEntity(Entity):
             # Verticale snelheid stoppen
             Other_Entity.Speed.y = 0
 
+    def Handle_Blinking(self, Eventstack):
+        self.Visible = not self.Visible
+        if self.Visible:
+            self.Blink_Timer = 0
+        else:
+            self.Blink_Timer += self._Game.Deltatime
+            if self.Blink_Timer > 0.5:
+                self.Visible = True
+
     def Update(self, Eventstack):
         super().Update(Eventstack)
-        self.Position += pygame.Vector2(30 * self._Game.Deltatime)
+        self.Handle_Blinking(Eventstack)

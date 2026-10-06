@@ -10,3 +10,7 @@ def Clamp_Vector(vector, minimum, maximum) -> pygame.Vector2:
 
 def Round_Vector(vector, precision: int = 0) -> pygame.Vector2:
     return pygame.Vector2(round(vector.x, precision), round(vector.y, precision))
+
+# Vind het centrum van een surface TOV je eigen grootte. Hierna kan een offset toegepast worden in de x en de y richting
+def Find_Center(Size_Self, Surface):
+    return (pygame.Vector2(Surface) - pygame.Vector2(Size_Self)) / 2
