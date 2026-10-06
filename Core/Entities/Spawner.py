@@ -1,7 +1,8 @@
 import pygame
 import random
 from Core import Constants
-from Core.Entities.Enemies import TestEnemy
+from Core.Entities.Enemies import OscilatingEnemy, ClearingBomb, TailGater, SimpleEnemy
+from Core.Functions import Random_Outside_Position_And_Direction
 
 
 class Spawner:
@@ -14,11 +15,30 @@ class Spawner:
     def Update(self):
         self.SpawnTimer += self._Game_Info._Game.Deltatime
         if self.SpawnTimer > self.SpawnInterval:
-            self.SpawnEnemy()
-
-    def SpawnEnemy(self):
+            self.Spawn_Enemy()
+    def Spawn_Enemy(self, Enemy=None):
         self.SpawnTimer = 0
-        self._Game_Info.EntityList.append(TestEnemy(Constants.Images.Player, self._Game_Info._Game, pygame.Vector2(random.randint(0,500), 0)))
+        if Enemy is None:
+            self._Game_Info.Add_Entity(self.Generate_Group())
+        else:
+            self._Game_Info.Add_Entity(Enemy)
 
-        # HIER DE SPAWNLOGICA
-        # HIER DE LOGICA VOOR HET UPDATEN VAN DE SPAWNINTERVAL AAN DE HAND VAN EEN SCORE
+
+    # Standaard is 1, zo kun je dus ook gewoon 1 enemy toevoegen
+    def Generate_Group(self, Amount = None):
+        Group = []
+
+        #TODO HIER ENEMYKEUZE BEPALEN
+
+        if Amount is None:
+            Amount = random.randint(1, 10)
+
+        # Richting, positie en snelheid, elke sprite moet dit hebben
+        Position, Direction = Random_Outside_Position_And_Direction()
+        Speed = random.randint(100, 200)
+
+        # Hoeveelheid enemies
+        for i in range(Amount):
+            SpawnPosition = Position - 3 * Direction * (i * 50) # offset tussen de enemies, 10 pixels speling
+            Group.append(SimpleEnemy(Constants.Images.Player, self._Game_Info._Game, SpawnPosition, Speed*Direction))
+        return Group

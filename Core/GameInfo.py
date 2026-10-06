@@ -6,6 +6,7 @@ from Core.Entities.Spawner import Spawner
 from Core.Entities.Test_Entity import TestEntity
 from Core.Functions import Find_Center
 from Core.Entities.Player import Player
+from Core.Entities.Entity import Entity
 
 
 class GameInfo:
@@ -73,7 +74,10 @@ class GameInfo:
             elif Event.type == pygame.KEYUP and ((Event.key == pygame.K_ESCAPE) or (Event.key == pygame.K_p)):
                 self.ShouldToggle = True
 
-    def Add_Entity(self, Entity):
+    def Add_Entity(self, Entity: Entity|list):
+        if type(Entity) is list:
+            self.EntityList.extend(Entity)
+            return
         self.EntityList.append(Entity)
 
     def Remove_Entity(self, Entity):

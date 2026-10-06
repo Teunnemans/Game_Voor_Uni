@@ -1,4 +1,5 @@
 import pygame
+import random
 # Bestandje voor vaak gebruikte functies :)
 
 # Ik begrijp de python intreperter niet helemaal, die geeft mij de warning: Expected type 'float', got 'SupportsDunderLT[Any] | SupportsDunderGT[Any]' instead
@@ -14,3 +15,28 @@ def Round_Vector(vector, precision: int = 0) -> pygame.Vector2:
 # Vind het centrum van een surface TOV je eigen grootte. Hierna kan een offset toegepast worden in de x en de y richting
 def Find_Center(Size_Self, Surface):
     return (pygame.Vector2(Surface) - pygame.Vector2(Size_Self)) / 2
+
+# Kiest willekeurig 1 van de zijden van het scherm uit voor het spawnen van nieuwe enemies, gaat steeds uit van 50 pixels breed en groot
+def Random_Outside_Position_And_Direction():
+    Side = random.randint(0, 3)
+
+    # Punt op het scherm zodat hij altijd de juiste richting neemt
+    Target = pygame.Vector2(random.randint(0, 500), random.randint(0, 500))
+
+    match Side:
+        case 0:  Position = pygame.Vector2(random.randrange(0, 501), -50) # boven
+        case 1: Position = pygame.Vector2(random.randrange(0, 501), 550) # onder
+        case 2: Position = pygame.Vector2(-50, random.randrange(0, 501)) # links
+        case 3: Position = pygame.Vector2(550, random.randrange(0, 501)) # rechts
+
+    # richtingsvector
+    Direction = Target - Position
+
+    # Eenheidsvector van de richtingsvector
+    Direction.normalize_ip()
+
+    # Richting beklemmen zodat hij niet gekke hoeken maakt
+    Direction.x = max(-1, min(1, round(Direction.x)))
+    Direction.y = max(-1, min(1, round(Direction.y)))
+
+    return Position, Direction
