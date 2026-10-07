@@ -17,7 +17,15 @@ class GameInfo:
         self.Paused = False
         self.ShouldToggle = True
 
-        self.Background = Generate_Background()
+
+        # Background logica, functioneel geproduceerd
+        # 2-hoog
+        self.Backgrounds = []
+        for x in range(2):
+            Background = Generate_Background()
+            Background[1] = pygame.Vector2(0, -500 + (x * 500))
+            self.Backgrounds.append(Background)
+
         self.Background_Speed = pygame.Vector2(0, 150)
         # Core properties
         self.Friction = 7
@@ -66,11 +74,26 @@ class GameInfo:
             Entity.Draw()
 
     def Update_Background(self):
-        # Update de positie van de achtergrond, is de achtergrond van het scherm af? Genereer een nieuwe
-        self.Background[1] += self.Background_Speed * self._Game.Deltatime
-        if self.Background[1].y >= 0:
-            self.Background = Generate_Background()
-            self.Background_Speed *= 1.3
+        # Update de positie van de achtergronden, is de achtergrond van het scherm af? Genereer een nieuwe
+        Index = 0 # Indexeren yeahh
+        for Background in self.Backgrounds:
+            Background[1] += self.Background_Speed * self._Game.Deltatime
+            if Background[1].y >= 500:
+                # Reset de achtergrond
+                self.Backgrounds[Index] = Generate_Background()
+                self.Backgrounds[Index][1] = pygame.Vector2(0, -500)
+
+                # Snelheid van de backgrounds schaalt met de score
+                self.Background_Speed = pygame.Vector2(0, 150 + (self.Score/5) + self.Time_Since_Game_Start)
+            Index += 1
+    def Get_Background(self):
+        # Genereert de hele achtergrond, die de renderer dan weer blit.
+        FullBackGround = pygame.Surface((500, 1000))
+        for Background in self.Backgrounds:
+            # Rendert de 2 achtergronden
+            FullBackGround.blit(Background[0], Background[1])
+        return [FullBackGround, pygame.Vector2(0, 0)]
+
     # Afschuiven van pauze-logica naar een aparte functie om het duidelijker te maken
     def HandlePause(self, Eventstack):
         # Pauze logica

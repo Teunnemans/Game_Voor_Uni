@@ -15,8 +15,8 @@ class Spawner:
     def Update(self):
         self.SpawnTimer += self._Game_Info._Game.Deltatime
         if self.SpawnTimer > self.SpawnInterval:
-            pass
-            #self.Spawn_Enemy()
+            #pass
+            self.Spawn_Enemy()
     def Spawn_Enemy(self, Enemy=None):
         self.SpawnTimer = 0
         if Enemy is None:

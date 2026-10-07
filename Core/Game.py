@@ -3,6 +3,7 @@ import time
 import pygame
 
 from Core import Constants
+from Core.Functions import Generate_Background
 from Core.GameInfo import GameInfo
 from Core.UI.UI_Manager import UI_Manager
 from Core.Constants import *
@@ -50,9 +51,9 @@ class Game:
         # Op basis van de state, return een andere achtergrond
         match self._State:
             case Game_State.Main_Menu:
-                return [Constants.Images.MainMenu, pygame.Vector2(0, 0)]
+                return [Constants.Images.MainMenuBackGround, pygame.Vector2(0, 0)]
             case Game_State.In_Game:
-                return self._GameInfo.Background
+                return self._GameInfo.Get_Background()
 
     # Set functie van de State variable
     def Set_State(self, New_State):

@@ -1,11 +1,6 @@
 import pygame
 import random
 
-from pygame import constants
-
-from Core import Constants
-
-
 # Bestandje voor vaak gebruikte functies :)
 
 # Ik begrijp de python intreperter niet helemaal, die geeft mij de warning: Expected type 'float', got 'SupportsDunderLT[Any] | SupportsDunderGT[Any]' instead
@@ -47,21 +42,38 @@ def Random_Outside_Position_And_Direction(Diagonal):
     return Position, Direction
 
 
-# Genereert een lange surface en een positie die bestaat uit een 10x10 grid aan surfaces die allemaal willekeurige vierkanten met "sterren erin"
+# Genereert 1 achtergrond! surface en een positie die bestaat uit een 10x10 grid aan surfaces die allemaal willekeurige vierkanten met "sterren erin"
 def Generate_Background():
-    Background = pygame.Surface(pygame.Vector2(500, 1000))
+    Background = pygame.Surface(pygame.Vector2(500, 500))
     Background.fill((0, 0, 0))
 
-    # ACHTERGROND DEEL 1
-    for i in range(10):
-        for j in range(20):
-            Tile = pygame.Surface(pygame.Vector2(50, 50))
-            Tile.fill((0, 0, 0))
-            # Genereer random sterren
-            for x in range(10):
-                pygame.draw.circle(Tile, (round(255* random.uniform(0.8, 1)), 255, 255), pygame.Vector2(random.randint(5,45), random.randint(5, 45)), random.randint(0,2))
-            Background.blit(Tile, (i*50, j*50))
-            # TODO genereer een starry background
-    # ACHTERGROND DEEL 2
-    # Offset van -500 zodat het bovenste gedeelte buiten het spel valt.
-    return [Background, (0, -500)]
+    # OUDE VERSIE
+    #for i in range(10):
+      #  for j in range(10):
+       #     Tile = pygame.Surface(pygame.Vector2(50, 50))
+        #    Tile.fill((0, 0, 0))
+         #   # Genereer random sterren
+          #  for x in range(random.randrange(3, 12)):
+           #     pygame.draw.circle(Tile, (round(255* random.uniform(0.8, 1)), 255, 255), pygame.Vector2(random.randint(2,48), random.randint(2, 48)), random.randint(0,2))
+           # Background.blit(Tile, (i*50, j*50))
+
+    # NIEUWE VERSIE, zou veel efficienter moeten zijn UPDATE: Yess is ook zo, ik laat even de oude functie staan, om te laten zien
+    # Wat ik daarvoor bedacht had.
+
+    # Sterren genereren
+    StarAmount = 500
+    for i in range(StarAmount):
+        x = random.randint(3, 497)
+        y = random.randint(3, 497)
+        pygame.draw.circle(Background, (round(255 * random.uniform(0.8, 1)), 255, 255),
+                       pygame.Vector2(x, y), random.randint(1, 2))
+
+    # Easter eggs genereren
+    for i in range(random.randint(1, 2)):
+        x = random.randint(50, 450)
+        y = random.randint(50, 450)
+        RGB = (round(255*random.uniform(0.0, 1)), round(255*random.uniform(0.0, 1)), round(255*random.uniform(0.0, 1)))
+        pygame.draw.circle(Background, RGB, pygame.Vector2(x, y), random.randint(3, 8))
+
+    # Offset wordt geregeld zodra het spel genereerd. Zodat het bovenste gedeelte buiten het spel valt.
+    return [Background, (0, 0)]
