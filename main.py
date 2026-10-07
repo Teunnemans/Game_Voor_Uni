@@ -1,11 +1,17 @@
 # Benodigde libraries voor de game. Inclusief eigen bestanden
 import sys, pygame
+
+from Core import Constants
 from Core.Game import Game
 #Initialisatie van de verschillende programma's, oa schermgrootte,
 # beetje illegale python maar 1 lijn code vind ik netter dan 3
-pygame.init(); pygame.font.init(); pygame.display.set_caption("Racegame! :)")
+pygame.init(); pygame.font.init(); pygame.display.set_caption("Space Racer! :)")
+
 # Maakt het scherm resizable. Default automatisch naar fullscreen
-Screen = pygame.display.set_mode((500, 500), pygame.SCALED | pygame.FULLSCREEN)
+if Constants.Game_Settings.Start_Fullscreen: Flags = pygame.SCALED | pygame.FULLSCREEN
+else: Flags = pygame.SCALED
+Screen = pygame.display.set_mode(Constants.Game_Settings.Screen_Size, Flags)
+
 #Initialisatie van de game! :)
 _Game = Game(Screen)
 # Core loop met exit conditie

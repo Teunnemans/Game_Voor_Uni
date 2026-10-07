@@ -53,8 +53,6 @@ class EnemyBase(Entity):
             or self.Position.y < -2 * self.Size.y - 1000):
             self.Kill()
 
-#TODO enemies groeperen, enemeies een richting kunnen geven
-
 # POWERUPS
 class ClearingBomb(EnemyBase):
     def __init__(self, Sprite, Game, Position):

@@ -2,7 +2,7 @@ import pygame
 import random
 from Core import Constants
 from Core.Entities.Enemies import OscilatingEnemy, ClearingBomb, TailGater, SimpleEnemy
-from Core.Functions import Random_Outside_Position_And_Direction
+from Core.Functions import Random_Outside_Position_And_Direction, ChangeFullscreen
 
 
 class Spawner:
@@ -12,6 +12,8 @@ class Spawner:
         self.SpawnInterval = 2
         # Tijd sinds laatste spawn
         self.SpawnTimer = 0
+
+
     def Update(self):
         self.SpawnTimer += self._Game_Info._Game.Deltatime
         if self.SpawnTimer > self.SpawnInterval:

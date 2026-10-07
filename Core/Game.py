@@ -1,12 +1,10 @@
 import time
 
-import pygame
-
 from Core import Constants
-from Core.Functions import Generate_Background
 from Core.GameInfo import GameInfo
 from Core.UI.UI_Manager import UI_Manager
 from Core.Constants import *
+
 # Een abstractielaag om de code in Main.py simpel te houden,
 # centraliseert alle logica in 2 functies die steeds geroepen worden. Behoud ook de beschermde belangrijke variabelen
 class Game:
@@ -28,7 +26,7 @@ class Game:
         self.Deltatime = self.Old_Time = time.perf_counter()
         self.Clock = pygame.time.Clock()
 
-        # ScoreKeeping
+        # ScoreKeeping TODO deze in de UI zetten
         self.Attempts = [{"Score":0, "Time_Survived":0}]
 
     # Deltatime update, update ook de pygame clock

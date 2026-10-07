@@ -1,6 +1,5 @@
 import pygame
 from enum import Enum
-from Core.Functions import Generate_Background
 # Bestand met voorgeladen constante waardes. Die iedere deel van het programma kan gebruiken
 
 
@@ -17,3 +16,7 @@ class EnemyTypes(Enum):
     Standard = 0
     PowerUp = 1
     Enemy = 2
+
+class Game_Settings:
+    Start_Fullscreen = False
+    Screen_Size = (500, 500)

@@ -3,7 +3,6 @@ from Core import Constants
 import pygame
 
 from Core.Entities.Spawner import Spawner
-from Core.Entities.Test_Entity import TestEntity
 from Core.Functions import Find_Center
 from Core.Entities.Player import Player
 from Core.Entities.Entity import Entity
@@ -44,9 +43,6 @@ class GameInfo:
 
         # Tijd sinds Game_Start
         self.Time_Since_Game_Start = 0
-
-        # Achtergrond van het spel. TODO maak deze dynamisch
-        #self.Background = Constants.Images.Background
 
     # Alle logica voor het updaten van het spel
     def Update(self, Eventstack):

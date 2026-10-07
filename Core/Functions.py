@@ -1,5 +1,7 @@
 import pygame
 import random
+from Core import Constants
+
 
 # Bestandje voor vaak gebruikte functies :)
 
@@ -77,3 +79,7 @@ def Generate_Background():
 
     # Offset wordt geregeld zodra het spel genereerd. Zodat het bovenste gedeelte buiten het spel valt.
     return [Background, (0, 0)]
+# Veranderd de fullscreen modus van het spel.
+def ChangeFullscreen(Fullscreen):
+    if Fullscreen: pygame.display.set_mode(Constants.Game_Settings.Screen_Size, pygame.FULLSCREEN | pygame.SCALED)
+    else: pygame.display.set_mode(Constants.Game_Settings.Screen_Size, pygame.SCALED)

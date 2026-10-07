@@ -2,7 +2,7 @@ import pygame
 
 # Basis klasse voor alle UI elementen
 class UI_Element:
-    def __init__(self, Root, Name, Sprite, Position, Visible = True):
+    def __init__(self, Root, Name, Sprite= None, Position=pygame.Vector2(0, 0), Visible = True):
         # Root is de groep waartoe de Element behoort
         self._Root = Root
 
@@ -31,7 +31,7 @@ class UI_Element:
     def Draw(self, Screen):
         # Bovenste laag bereikt.
         if self.Visible:
-            Screen.blit(self.Sprite, self.Get_Absolute_Position())
+            if self.Sprite is not None: Screen.blit(self.Sprite, self.Get_Absolute_Position())
 
     def Update(self, Eventstack):
         if self.Visible:

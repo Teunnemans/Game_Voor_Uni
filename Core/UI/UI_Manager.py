@@ -1,6 +1,6 @@
 # Dit is een python bestand met een eigengeschreven UI_Manager die allemaal ui elements onderhoud en verzamelt.
 import pygame
-from Core.Functions import Round_Vector
+from Core.Functions import Round_Vector, ChangeFullscreen
 from Core.UI.UI_Element import UI_Group
 from Core.UI.UI_Types import Image, Text_Element, Button
 from Core.Constants import Game_State
@@ -10,10 +10,11 @@ class UI_Manager(UI_Group):
     def __init__(self, Game):
         super().__init__("", "UI_Manager", (0, 0))
 
+        self.Fullscreen = True
+
         self.Elements = []
         self.Game = Game
         self.Standard_Font = pygame.font.SysFont("Arial", 20)
-
         self.Add_Element(Generate_Pause_Overlay(self)) # Genereert de pausedUIoverlay
         self.Add_Element(Generate_MainMenu(self)) # Genereert de mainmenu
         # Paar debug statements, Laat statistieken van de speler zien
@@ -28,6 +29,7 @@ class UI_Manager(UI_Group):
                     if Event.dict["Name"] == "MainMenuButton": self.Game.Set_State(Game_State.Main_Menu)
                     if Event.dict["Name"] == "RestartButton": self.Game.Reset()
                     if Event.dict["Name"] == "PlayButton": self.Game.Start_Game()
+                    if Event.dict["Name"] == "FullscreenButton": self.Fullscreen = not self.Fullscreen; ChangeFullscreen(self.Fullscreen)
 
         # Pauze menu alleen te zien in game
         if self.Game.Get_GameInfo().Paused and self.Game.Get_State() == Game_State.In_Game: self.Get_Element("Paused_Ui").Visible = True
@@ -78,6 +80,9 @@ def Generate_MainMenu(UIManager):
     MainMenuUi.Add_Element(
         Button(UIManager, "QuitButton", Find_Center((130, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 102), pygame.transform.scale(pygame.image.load("Art/Player.png"), (130, 50)),
                "Spel stoppen", UIManager.Standard_Font, (255, 0, 0)))
+    MainMenuUi.Add_Element(
+        Button(UIManager, "FullscreenButton", Find_Center((130, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 152), pygame.transform.scale(pygame.image.load("Art/Player.png"), (130, 50)),
+               "Toggle Fullscreen", UIManager.Standard_Font, (255, 0, 0)))
     return MainMenuUi
 # Functie voor het genereren van de UI van de Debug_Overlay
 def Generate_Debug_Overlay(UIManager):

@@ -4,16 +4,14 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="Background generator basis, procedural maar nog niet mooi">
-      <change afterPath="$PROJECT_DIR$/Art/Main-Menu-Image.png" afterDir="false" />
+    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="Werkende dynamische achtergrond!! Basis voor main menu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Constants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Entities/Spawner.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Entities/Spawner.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Functions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Functions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/GameInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/GameInfo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Core/UI/UI_Element.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/UI/UI_Element.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/UI/UI_Manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/UI/UI_Manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/UI/UI_Types.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/UI/UI_Types.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,61 +76,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.15506791389056E-26" />
-      <entry key="MS500" value="1.0655327278551655E-5" />
-      <entry key="S2" value="0.0957765883857131" />
-      <entry key="S5" value="0.5933865877354345" />
-      <entry key="S10" value="1.1425301484919896" />
-      <entry key="S30" value="4.193204587597621" />
-      <entry key="S60" value="10.586411092250971" />
-      <entry key="M2" value="20.790606642019387" />
-      <entry key="M5" value="35.68774004196346" />
-      <entry key="M10" value="52.07675438717985" />
-      <entry key="M15" value="70.18755593781373" />
-      <entry key="M30" value="118.47188310741247" />
-      <entry key="H1" value="173.6668968115315" />
-      <entry key="H2" value="253.65932152307445" />
-      <entry key="H4" value="544.1695371071378" />
-      <entry key="D1" value="3850.450871813177" />
-      <entry key="W1" value="6591.733880618463" />
+      <entry key="MS100" value="0.00560138769876194" />
+      <entry key="MS500" value="0.36320288351039204" />
+      <entry key="S2" value="1.4141661479983456" />
+      <entry key="S5" value="2.7153895755203763" />
+      <entry key="S10" value="3.920809341061457" />
+      <entry key="S30" value="6.1909625720037855" />
+      <entry key="S60" value="9.025248602012022" />
+      <entry key="M2" value="16.005894115656055" />
+      <entry key="M5" value="35.81068861613818" />
+      <entry key="M10" value="59.927399065268546" />
+      <entry key="M15" value="80.53323931794354" />
+      <entry key="M30" value="134.7999071311454" />
+      <entry key="H1" value="206.54967253235432" />
+      <entry key="H2" value="301.89158258454313" />
+      <entry key="H4" value="589.8208037133246" />
+      <entry key="D1" value="3887.756027916763" />
+      <entry key="W1" value="6672.577828945694" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0001702567952089" />
-      <entry key="MS500" value="1.176469589039909" />
-      <entry key="S2" value="1.832684722293922" />
-      <entry key="S5" value="2.608532113631565" />
-      <entry key="S10" value="3.1867385826891788" />
-      <entry key="S30" value="4.25461477558096" />
-      <entry key="S60" value="5.2534695631931" />
-      <entry key="M2" value="6.750370557886932" />
-      <entry key="M5" value="9.449363509246597" />
-      <entry key="M10" value="12.650215676028202" />
-      <entry key="M15" value="15.92262146348847" />
-      <entry key="M30" value="24.46769724551749" />
-      <entry key="H1" value="34.32741487936697" />
-      <entry key="H2" value="49.14078956253501" />
-      <entry key="H4" value="98.65507002373944" />
-      <entry key="D1" value="522.2059604543559" />
-      <entry key="W1" value="830.7456161684112" />
+      <entry key="MS100" value="1.000000017235997" />
+      <entry key="MS500" value="1.0280083343615438" />
+      <entry key="S2" value="1.4090927854684132" />
+      <entry key="S5" value="1.6994050178844275" />
+      <entry key="S10" value="1.8365680778792695" />
+      <entry key="S30" value="2.1109512767140464" />
+      <entry key="S60" value="3.114736388340273" />
+      <entry key="M2" value="5.7620344589225585" />
+      <entry key="M5" value="11.68169138205655" />
+      <entry key="M10" value="17.518342293520497" />
+      <entry key="M15" value="21.971253053190207" />
+      <entry key="M30" value="32.715514967225374" />
+      <entry key="H1" value="46.272281494784416" />
+      <entry key="H2" value="64.18814197234407" />
+      <entry key="H4" value="113.73433819279634" />
+      <entry key="D1" value="538.3662331708251" />
+      <entry key="W1" value="852.9588104627938" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="4.859739730852455E-4" />
-      <entry key="MS500" value="0.2812873010698176" />
-      <entry key="S2" value="1.3824593483675631" />
-      <entry key="S5" value="2.789941472744679" />
-      <entry key="S10" value="4.03561660698237" />
-      <entry key="S30" value="8.287001796939734" />
-      <entry key="S60" value="15.717678614899473" />
-      <entry key="M2" value="27.448061532660738" />
-      <entry key="M5" value="45.080511217754506" />
-      <entry key="M10" value="64.68760998201581" />
-      <entry key="M15" value="86.07549925504385" />
-      <entry key="M30" value="142.90978645831925" />
-      <entry key="H1" value="207.97162167382342" />
-      <entry key="H2" value="302.78355310337713" />
-      <entry key="H4" value="642.8082691307925" />
-      <entry key="D1" value="4372.640426116134" />
-      <entry key="W1" value="7422.475604135359" />
+      <entry key="MS100" value="0.012328977194521997" />
+      <entry key="MS500" value="0.6693028486328702" />
+      <entry key="S2" value="2.3296572089864735" />
+      <entry key="S5" value="4.073407121428829" />
+      <entry key="S10" value="5.5333763564235685" />
+      <entry key="S30" value="8.19936030365425" />
+      <entry key="S60" value="12.059083584035015" />
+      <entry key="M2" value="21.68649071400718" />
+      <entry key="M5" value="47.41821755959204" />
+      <entry key="M10" value="77.38763992881456" />
+      <entry key="M15" value="102.45515461894433" />
+      <entry key="M30" value="167.4770443573563" />
+      <entry key="H1" value="252.79321905038378" />
+      <entry key="H2" value="366.05918058021416" />
+      <entry key="H4" value="703.5367850772982" />
+      <entry key="D1" value="4426.10551863514" />
+      <entry key="W1" value="7525.532671942386" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -249,7 +247,7 @@
       <workItem from="1791287945777" duration="11256000" />
       <workItem from="1791314077275" duration="1327000" />
       <workItem from="1791321095843" duration="5924000" />
-      <workItem from="1791376767850" duration="7766000" />
+      <workItem from="1791376767850" duration="9305000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit :)">
       <option name="closed" value="true" />
@@ -435,7 +433,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791379287672</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Werkende dynamische achtergrond!! Basis voor main menu">
+      <option name="closed" value="true" />
+      <created>1791410150160</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1791410150160</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,7 +482,8 @@
     <MESSAGE value="Oefenen met enemies maken" />
     <MESSAGE value="Er gaat hier veel tijd in zitten" />
     <MESSAGE value="Background generator basis, procedural maar nog niet mooi" />
-    <option name="LAST_COMMIT_MESSAGE" value="Background generator basis, procedural maar nog niet mooi" />
+    <MESSAGE value="Werkende dynamische achtergrond!! Basis voor main menu" />
+    <option name="LAST_COMMIT_MESSAGE" value="Werkende dynamische achtergrond!! Basis voor main menu" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Game.coverage" NAME="Game Coverage Results" MODIFIED="1791312635793" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core" />
@@ -485,7 +492,7 @@
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Spawner.coverage" NAME="Spawner Coverage Results" MODIFIED="1791324057833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core/Entities" />
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Entity.coverage" NAME="Entity Coverage Results" MODIFIED="1790169516184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Game_Uni_Real$GameInfo.coverage" NAME="GameInfo Coverage Results" MODIFIED="1790618342773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core" />
-    <SUITE FILE_PATH="coverage/Game_Uni_Real$main.coverage" NAME="main Coverage Results" MODIFIED="1791409943895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Game_Uni_Real$main.coverage" NAME="main Coverage Results" MODIFIED="1791411487444" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Player.coverage" NAME="Player Coverage Results" MODIFIED="1791378729147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core/Entities" />
   </component>
 </project>
