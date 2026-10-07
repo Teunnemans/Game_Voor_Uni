@@ -15,7 +15,8 @@ class Spawner:
     def Update(self):
         self.SpawnTimer += self._Game_Info._Game.Deltatime
         if self.SpawnTimer > self.SpawnInterval:
-            self.Spawn_Enemy()
+            pass
+            #self.Spawn_Enemy()
     def Spawn_Enemy(self, Enemy=None):
         self.SpawnTimer = 0
         if Enemy is None:
@@ -34,7 +35,7 @@ class Spawner:
             Amount = random.randint(1, 10)
 
         # Richting, positie en snelheid, elke sprite moet dit hebben
-        Position, Direction = Random_Outside_Position_And_Direction()
+        Position, Direction = Random_Outside_Position_And_Direction(False) # Diagonaal is False
         Speed = random.randint(100, 200)
 
         # Hoeveelheid enemies

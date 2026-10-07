@@ -1,5 +1,7 @@
 import time
 
+import pygame
+
 from Core import Constants
 from Core.GameInfo import GameInfo
 from Core.UI.UI_Manager import UI_Manager
@@ -48,7 +50,7 @@ class Game:
         # Op basis van de state, return een andere achtergrond
         match self._State:
             case Game_State.Main_Menu:
-                return Constants.Images.MainMenu
+                return [Constants.Images.MainMenu, pygame.Vector2(0, 0)]
             case Game_State.In_Game:
                 return self._GameInfo.Background
 
@@ -79,7 +81,8 @@ class Game:
     def Draw(self):
 
         self._Screen.fill((0, 0, 0)) # Screen reset.
-        self._Screen.blit(self.Get_Background(), (0, 0)) # Draw achtergrond, altijd size(500, 500) Haalt hij op uit een functie
+        Background = self.Get_Background()
+        self._Screen.blit(Background[0],Background[1]) # Draw achtergrond, altijd size(500, 500) Haalt hij op uit een functie
 
         # State logica, ook te vinden in draw, zodat je selectief kan kiezen wat er zichtbaar is tijdens verschillende delen van het spel
         match self._State:

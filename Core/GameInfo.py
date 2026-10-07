@@ -7,7 +7,7 @@ from Core.Entities.Test_Entity import TestEntity
 from Core.Functions import Find_Center
 from Core.Entities.Player import Player
 from Core.Entities.Entity import Entity
-
+from Core.Functions import Generate_Background
 
 class GameInfo:
     def __init__(self, Game):
@@ -17,6 +17,8 @@ class GameInfo:
         self.Paused = False
         self.ShouldToggle = True
 
+        self.Background = Generate_Background()
+        self.Background_Speed = pygame.Vector2(0, 150)
         # Core properties
         self.Friction = 7
 
@@ -36,7 +38,7 @@ class GameInfo:
         self.Time_Since_Game_Start = 0
 
         # Achtergrond van het spel. TODO maak deze dynamisch
-        self.Background = Constants.Images.Background
+        #self.Background = Constants.Images.Background
 
     # Alle logica voor het updaten van het spel
     def Update(self, Eventstack):
@@ -53,17 +55,22 @@ class GameInfo:
 
             self.Score += (5000/180) * self._Game.Deltatime # zie score init voor definitie
             self.Time_Since_Game_Start += self._Game.Deltatime
-
+            self.Update_Background()
         # TODO HIER MOET NOG SPEL LOGICA
     # Alle logica voor het tekenen op het scherm.
     def Draw(self):
-
         #TODO Dynamische ACHTERGROND
         self.Player.Draw() # Player Draw Update
         # Teken alle entities in het spel.
         for Entity in self.EntityList:
             Entity.Draw()
 
+    def Update_Background(self):
+        # Update de positie van de achtergrond, is de achtergrond van het scherm af? Genereer een nieuwe
+        self.Background[1] += self.Background_Speed * self._Game.Deltatime
+        if self.Background[1].y >= 0:
+            self.Background = Generate_Background()
+            self.Background_Speed *= 1.3
     # Afschuiven van pauze-logica naar een aparte functie om het duidelijker te maken
     def HandlePause(self, Eventstack):
         # Pauze logica

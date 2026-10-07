@@ -91,7 +91,7 @@ def Generate_Debug_Overlay(UIManager):
     DebugUi.Add_Element(Text_Element(DebugUi, "Lives", f"Lives:", (0, 110), UIManager.Standard_Font, (255, 0, 0)))
     DebugUi.Add_Element(Text_Element(DebugUi, "Score", f"Score:", (0, 130), UIManager.Standard_Font, (255, 0, 0)))
     DebugUi.Add_Element(Text_Element(DebugUi, "Entitylist", f"Entitylist:", (0, 150), UIManager.Standard_Font, (255, 0, 0)))
-
+    DebugUi.Add_Element(Text_Element(DebugUi, "BackGroundPos", f"BackGroundPos:", (0, 170), UIManager.Standard_Font, (255, 0, 0)))
 
     return DebugUi
 
@@ -108,3 +108,4 @@ def Update_Debug_Overlay(UiManager):
     DebugUi.Get_Element("Lives").Text = f"Lives: {UiManager.Game.Get_GameInfo().Player.Lives}"
     DebugUi.Get_Element("Score").Text = f"Score: {round(UiManager.Game.Get_GameInfo().Score)}"
     DebugUi.Get_Element("Entitylist").Text = f"Entitylist: {len(UiManager.Game.Get_GameInfo().EntityList)}"
+    DebugUi.Get_Element("BackGroundPos").Text = f"BackGroundPos: {UiManager.Game.Get_Background()[1]}"
