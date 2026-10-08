@@ -1,5 +1,7 @@
 # Dit is een python bestand met een eigengeschreven UI_Manager die allemaal ui elements onderhoud en verzamelt.
 import pygame
+
+from Core import Constants
 from Core.Functions import Round_Vector, ChangeFullscreen
 from Core.UI.UI_Element import UI_Group
 from Core.UI.UI_Types import Image, Text_Element, Button
@@ -14,12 +16,13 @@ class UI_Manager(UI_Group):
 
         self.Elements = []
         self.Game = Game
-        self.Standard_Font = pygame.font.SysFont("Arial", 20)
         self.Add_Element(Generate_Pause_Overlay(self)) # Genereert de pausedUIoverlay
         self.Add_Element(Generate_MainMenu(self)) # Genereert de mainmenu
         # Paar debug statements, Laat statistieken van de speler zien
-        if self.Game.Debug: self.Add_Element(Generate_Debug_Overlay(self))
+        if Constants.Game_Settings.Debug: self.Add_Element(Generate_Debug_Overlay(self))
 
+        # 1e scoreboard update # TODO maak deze persistent
+        UpdateScoreBoard(self)
     # Update functie
     def Update(self, Eventstack):
         # De ui heeft toegang tot de pygame event queue. Hierdoor reageert de game op events.
@@ -29,13 +32,15 @@ class UI_Manager(UI_Group):
                     if Event.dict["Name"] == "MainMenuButton": self.Game.Set_State(Game_State.Main_Menu)
                     if Event.dict["Name"] == "RestartButton": self.Game.Reset()
                     if Event.dict["Name"] == "PlayButton": self.Game.Start_Game()
-                    if Event.dict["Name"] == "FullscreenButton": self.Fullscreen = not self.Fullscreen; ChangeFullscreen(self.Fullscreen)
+                    if Event.dict["Name"] == "FullscreenButton":
+                        self.Fullscreen = not self.Fullscreen
+                        ChangeFullscreen(self.Fullscreen)
 
         # Pauze menu alleen te zien in game
         if self.Game.Get_GameInfo().Paused and self.Game.Get_State() == Game_State.In_Game: self.Get_Element("Paused_Ui").Visible = True
         else: self.Get_Element("Paused_Ui").Visible = False
         # Debug statements updaten(Dit zou ook buiten de manager kunnen gebeuren dat is prima)
-        if self.Game.Debug: Update_Debug_Overlay(self)
+        if Constants.Game_Settings.Debug: Update_Debug_Overlay(self)
 
         #TODO Game UI OVERLAY TOEVOEGEN
 
@@ -60,42 +65,45 @@ def Generate_Pause_Overlay(UIManager):
     PausedOverlay = pygame.Surface((500, 500), pygame.SRCALPHA)
     PausedOverlay.fill((0, 0, 0, 70))
     PausedUi.Add_Element(Image(PausedUi, "PausedBackground", PausedOverlay, (0, 0)))
+    PausedUi.Add_Element(Text_Element(PausedUi, "PauseText", "Gepauzeerd", (200, 230)))
+    # Knoppen
     PausedUi.Add_Element(
-        Text_Element(PausedUi, "PauseText", "Gepauzeerd", (200, 230), UIManager.Standard_Font, (255, 255, 255)))
+        Button(UIManager, "MainMenuButton", pygame.Vector2(20, 102), pygame.Vector2(130, 50), pygame.transform.scale(Constants.Images.Player, (130, 50)), "Terug naar het menu"))
     PausedUi.Add_Element(
-        Button(UIManager, "MainMenuButton", pygame.Vector2(20, 102), pygame.transform.scale(pygame.image.load("Art/Player.png"), (130, 50)),
-               "Terug naar menu", UIManager.Standard_Font, (255, 0, 0)))
-
-    PausedUi.Add_Element(
-        Button(UIManager, "RestartButton", pygame.Vector2(20, 50), pygame.transform.scale(pygame.image.load("Art/Player.png"), (130, 50)),
-               "Herstart het spel", UIManager.Standard_Font, (255, 0, 0)))
+        Button(UIManager, "RestartButton", pygame.Vector2(20, 50), pygame.Vector2(130, 50),
+               pygame.transform.scale(Constants.Images.Player, (130, 50)), "Herstart het spel"))
 
     return PausedUi
 # Main menu generatie
 def Generate_MainMenu(UIManager):
     MainMenuUi = UI_Group(UIManager, "MainMenu_Ui", (0, 0))
-    MainMenuUi.Add_Element(
-        Button(UIManager, "PlayButton", Find_Center((100, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 50), pygame.transform.scale(pygame.image.load("Art/Player.png"), (100, 50)),
-               "Spel starten", UIManager.Standard_Font, (255, 0, 0)))
-    MainMenuUi.Add_Element(
-        Button(UIManager, "QuitButton", Find_Center((130, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 102), pygame.transform.scale(pygame.image.load("Art/Player.png"), (130, 50)),
-               "Spel stoppen", UIManager.Standard_Font, (255, 0, 0)))
-    MainMenuUi.Add_Element(
-        Button(UIManager, "FullscreenButton", Find_Center((130, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 152), pygame.transform.scale(pygame.image.load("Art/Player.png"), (130, 50)),
-               "Toggle Fullscreen", UIManager.Standard_Font, (255, 0, 0)))
+    # Knoppen zonder image, omdat de main menu gewoon 1 sprite is.
+    MainMenuUi.Add_Element(Button(UIManager, "PlayButton", Find_Center((100, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 120), (100, 50)))
+    MainMenuUi.Add_Element(Button(UIManager, "QuitButton", (400, 450), (100, 50)))
+    MainMenuUi.Add_Element(Text_Element(UIManager, "ScoreText", f"", (30, 160), Font=pygame.font.SysFont("Arial", 10)
+))
+    #MainMenuUi.Add_Element(Button(UIManager, "FullscreenButton", Find_Center((100, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 160), (100, 50), pygame.transform.scale(pygame.image.load("Art/Player.png"), (130, 50)), "Toggle Fullscreen"))
     return MainMenuUi
+
+def UpdateScoreBoard(UiManager):
+    ScoreText = UiManager.Get_Element("MainMenu_Ui").Get_Element("ScoreText")
+    Index = 0
+    Attempts = UiManager.Game.Attempts
+    for Attempt in Attempts:
+        Index += 1
+        ScoreText.Text += f"{Index}: SCORE: {Attempt["Score"]}, TIME SURVIVED: {Attempt["Time_Survived"]} \n"
 # Functie voor het genereren van de UI van de Debug_Overlay
 def Generate_Debug_Overlay(UIManager):
     DebugUi = UI_Group(UIManager, "Debug_Ui", (0, 0))
 
-    DebugUi.Add_Element(Text_Element(DebugUi, "FPS", f"FPS ", (0, 10), UIManager.Standard_Font, (255, 0, 0)))
-    DebugUi.Add_Element(Text_Element(DebugUi, "Time", f"Time: ", (0, 30), UIManager.Standard_Font, (255, 0, 0)))
-    DebugUi.Add_Element(Text_Element(DebugUi, "Position", f"Position:", (0, 50), UIManager.Standard_Font, (255, 0, 0)))
-    DebugUi.Add_Element(Text_Element(DebugUi, "Speed", f"Speed:", (0, 70), UIManager.Standard_Font, (255, 0, 0)))
-    DebugUi.Add_Element(Text_Element(DebugUi, "Colliding", f"Colliding:", (0, 90), UIManager.Standard_Font, (255, 0, 0)))
-    DebugUi.Add_Element(Text_Element(DebugUi, "Lives", f"Lives:", (0, 110), UIManager.Standard_Font, (255, 0, 0)))
-    DebugUi.Add_Element(Text_Element(DebugUi, "Score", f"Score:", (0, 130), UIManager.Standard_Font, (255, 0, 0)))
-    DebugUi.Add_Element(Text_Element(DebugUi, "Entitylist", f"Entitylist:", (0, 150), UIManager.Standard_Font, (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "FPS", f"FPS ", (0, 10), (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "Time", f"Time: ", (0, 30), (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "Position", f"Position:", (0, 50), (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "Speed", f"Speed:", (0, 70), (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "Colliding", f"Colliding:", (0, 90), (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "Lives", f"Lives:", (0, 110), (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "Score", f"Score:", (0, 130), (255, 0, 0)))
+    DebugUi.Add_Element(Text_Element(DebugUi, "Entitylist", f"Entitylist:", (0, 150), (255, 0, 0)))
     return DebugUi
 
 def Update_Debug_Overlay(UiManager):

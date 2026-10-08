@@ -7,6 +7,8 @@ from Core.Functions import Find_Center
 from Core.Entities.Player import Player
 from Core.Entities.Entity import Entity
 from Core.Functions import Generate_Background
+from Core.UI.UI_Manager import UpdateScoreBoard
+
 
 class GameInfo:
     def __init__(self, Game):
@@ -113,3 +115,4 @@ class GameInfo:
     def End_Game(self):
         self._Game.Attempts.append({"Score" : self.Score, "Time_Survived" : self.Time_Since_Game_Start})
         self._Game.Set_State(Constants.Game_State.Main_Menu)
+        UpdateScoreBoard(self._Game.Get_Ui_Manager())

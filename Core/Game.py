@@ -9,7 +9,14 @@ from Core.Constants import *
 # centraliseert alle logica in 2 functies die steeds geroepen worden. Behoud ook de beschermde belangrijke variabelen
 class Game:
     def __init__(self, Screen: pygame.Surface):
-        self.Debug = True
+
+        # Eigen variablen
+        # Deltatime setup
+        self.Deltatime = self.Old_Time = time.perf_counter()
+        self.Clock = pygame.time.Clock()
+
+        # ScoreKeeping TODO deze in de UI zetten
+        self.Attempts = [{"Score":0, "Time_Survived":0}]
 
         #Scherm variabele
         self._Screen = Screen
@@ -22,12 +29,6 @@ class Game:
         # UI manager
         self._UI_Manager = UI_Manager(self)
 
-        # Deltatime setup
-        self.Deltatime = self.Old_Time = time.perf_counter()
-        self.Clock = pygame.time.Clock()
-
-        # ScoreKeeping TODO deze in de UI zetten
-        self.Attempts = [{"Score":0, "Time_Survived":0}]
 
     # Deltatime update, update ook de pygame clock
     def Update_Deltatime(self):

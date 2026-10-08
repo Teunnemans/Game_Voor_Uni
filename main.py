@@ -3,9 +3,6 @@ import sys, pygame
 
 from Core import Constants
 from Core.Game import Game
-#Initialisatie van de verschillende programma's, oa schermgrootte,
-# beetje illegale python maar 1 lijn code vind ik netter dan 3
-pygame.init(); pygame.font.init(); pygame.display.set_caption("Space Racer! :)")
 
 # Maakt het scherm resizable. Default automatisch naar fullscreen
 if Constants.Game_Settings.Start_Fullscreen: Flags = pygame.SCALED | pygame.FULLSCREEN

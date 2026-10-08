@@ -1,6 +1,11 @@
 import pygame
 from enum import Enum
-# Bestand met voorgeladen constante waardes. Die iedere deel van het programma kan gebruiken
+
+
+# Game init
+pygame.init()
+pygame.font.init()
+pygame.display.set_caption("Space Racer! :)")
 
 
 class Images:
@@ -18,5 +23,8 @@ class EnemyTypes(Enum):
     Enemy = 2
 
 class Game_Settings:
-    Start_Fullscreen = False
+    Start_Fullscreen = True
     Screen_Size = (500, 500)
+    Debug = False
+    Standard_Font = pygame.font.SysFont("Arial", 20)
+
