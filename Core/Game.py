@@ -1,6 +1,7 @@
 import time
 
 from Core import Constants
+from Core.Functions import ReadHighScoreFile
 from Core.GameInfo import GameInfo
 from Core.UI.UI_Manager import UI_Manager
 from Core.Constants import *
@@ -10,24 +11,19 @@ from Core.Constants import *
 class Game:
     def __init__(self, Screen: pygame.Surface):
 
-        # Eigen variablen
         # Deltatime setup
         self.Deltatime = self.Old_Time = time.perf_counter()
         self.Clock = pygame.time.Clock()
 
-        # ScoreKeeping TODO deze in de UI zetten
-        self.Attempts = [{"Score":0, "Time_Survived":0}]
+        # ScoreKeeping, slaat deze ook op in een Json bestand
+        self.Attempts = ReadHighScoreFile()
 
-        #Scherm variabele
-        self._Screen = Screen
-
-        # DEZE VARIABLE BEPAALT IN WELKE STAAT HET SPEL ZICH BEVIND. ALLES PAST ZICH HIER OP AAN
-        self._State = Game_State.Main_Menu
+        self._Screen = Screen #Scherm variabele
 
         # Alles met een _ ervoor beschouw ik een beetje als "sacred", wees voorzichtig met wat je daar aanpast
-        self._GameInfo = GameInfo(self)
-        # UI manager
-        self._UI_Manager = UI_Manager(self)
+        self._State = Game_State.Main_Menu # DEZE VARIABLE BEPAALT IN WELKE STAAT HET SPEL ZICH BEVIND. ALLES PAST ZICH HIER OP AAN
+        self._GameInfo = GameInfo(self) # Gameinfo object die zich elke ronde reset.
+        self._UI_Manager = UI_Manager(self) # UI manager
 
 
     # Deltatime update, update ook de pygame clock

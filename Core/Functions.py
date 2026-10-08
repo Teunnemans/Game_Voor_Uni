@@ -1,6 +1,7 @@
 import pygame
 import random
 from Core import Constants
+import json
 
 
 # Bestandje voor vaak gebruikte functies :)
@@ -83,3 +84,26 @@ def Generate_Background():
 def ChangeFullscreen(Fullscreen):
     if Fullscreen: pygame.display.set_mode(Constants.Game_Settings.Screen_Size, pygame.FULLSCREEN | pygame.SCALED)
     else: pygame.display.set_mode(Constants.Game_Settings.Screen_Size, pygame.SCALED)
+
+# SCOREBOARD functionaliteit, reading en writing met super simpele python functionaliteit
+
+def ReadHighScoreFile():
+    try:
+        with open("Scores.json", "r") as file:
+            print("Bestand gelezen!")
+            return json.load(file)
+    # Lege highscore file, invalide json return gewoon een lege array
+    except FileNotFoundError :
+        # Als het bestand nog niet bestaat maakt hij deze aan
+        print("Bestand niet gevonden!")
+        with open("Scores.json", "w") as file:
+            json.dump([], file)
+        return []
+    except json.decoder.JSONDecodeError:
+        print("Foute JSON!")
+        return []
+
+def WriteHighScoreFile(HighScoreList):
+    with open("Scores.json", "w") as file:
+        print("Bestand geschreven!")
+        json.dump(HighScoreList, file)

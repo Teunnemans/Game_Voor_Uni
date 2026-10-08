@@ -3,7 +3,7 @@ from Core import Constants
 import pygame
 
 from Core.Entities.Spawner import Spawner
-from Core.Functions import Find_Center
+from Core.Functions import Find_Center, WriteHighScoreFile
 from Core.Entities.Player import Player
 from Core.Entities.Entity import Entity
 from Core.Functions import Generate_Background
@@ -113,6 +113,8 @@ class GameInfo:
 
     # Terug naar het menu.
     def End_Game(self):
-        self._Game.Attempts.append({"Score" : self.Score, "Time_Survived" : self.Time_Since_Game_Start})
+        # Weight voor de ranking
+        self._Game.Attempts.append({"Score" : self.Score, "Time_Survived" : self.Time_Since_Game_Start, "Weight":self.Score*self.Time_Since_Game_Start})
         self._Game.Set_State(Constants.Game_State.Main_Menu)
         UpdateScoreBoard(self._Game.Get_Ui_Manager())
+        WriteHighScoreFile(self._Game.Attempts)

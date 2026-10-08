@@ -1,6 +1,5 @@
 # Dit is een python bestand met een eigengeschreven UI_Manager die allemaal ui elements onderhoud en verzamelt.
 import pygame
-
 from Core import Constants
 from Core.Functions import Round_Vector, ChangeFullscreen
 from Core.UI.UI_Element import UI_Group
@@ -80,22 +79,31 @@ def Generate_MainMenu(UIManager):
     # Knoppen zonder image, omdat de main menu gewoon 1 sprite is.
     MainMenuUi.Add_Element(Button(UIManager, "PlayButton", Find_Center((100, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 120), (100, 50)))
     MainMenuUi.Add_Element(Button(UIManager, "QuitButton", (400, 450), (100, 50)))
-    MainMenuUi.Add_Element(Text_Element(UIManager, "ScoreText", f"", (30, 160), Font=pygame.font.SysFont("Arial", 10)
-))
+    MainMenuUi.Add_Element(Button(UIManager, "FullscreenButton", pygame.Vector2(0,450), (50, 50)))
+    MainMenuUi.Add_Element(UI_Group(UIManager, "ScoreBoard", (30, 160)))
     #MainMenuUi.Add_Element(Button(UIManager, "FullscreenButton", Find_Center((100, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 160), (100, 50), pygame.transform.scale(pygame.image.load("Art/Player.png"), (130, 50)), "Toggle Fullscreen"))
     return MainMenuUi
 
+# Rangschikt de scoreboard, slaat de scores op en displayt ze op het scherm
 def UpdateScoreBoard(UiManager):
-    ScoreText = UiManager.Get_Element("MainMenu_Ui").Get_Element("ScoreText")
+    ScoreBoard = UiManager.Get_Element("MainMenu_Ui").Get_Element("ScoreBoard")
+    # Cleart de scoreboard
+    ScoreBoard.Elements = []
     Index = 0
     Attempts = UiManager.Game.Attempts
+    # Sorteer de scoreboard op punten, met de meest punten op de bovenkant
+    Attempts.sort(key=lambda Attempt: Attempt["Weight"], reverse=True)
     for Attempt in Attempts:
         Index += 1
-        ScoreText.Text += f"{Index}: SCORE: {Attempt["Score"]}, TIME SURVIVED: {Attempt["Time_Survived"]} \n"
+        # Stop als er meer dan 10 punten zijn, anders loopt hij over de beschikbare ruimte heen.
+        if Index > 10: break
+        ScoreText = Text_Element(UiManager, f"Attempts{Index}", f"{Index}: {round(Attempt["Score"])} punten in {round(Attempt["Time_Survived"])} seconden", (30, 140 + (Index * 20)), Font=pygame.font.SysFont("Arial", 10))
+        ScoreBoard.Add_Element(ScoreText)
+
+
 # Functie voor het genereren van de UI van de Debug_Overlay
 def Generate_Debug_Overlay(UIManager):
     DebugUi = UI_Group(UIManager, "Debug_Ui", (0, 0))
-
     DebugUi.Add_Element(Text_Element(DebugUi, "FPS", f"FPS ", (0, 10), (255, 0, 0)))
     DebugUi.Add_Element(Text_Element(DebugUi, "Time", f"Time: ", (0, 30), (255, 0, 0)))
     DebugUi.Add_Element(Text_Element(DebugUi, "Position", f"Position:", (0, 50), (255, 0, 0)))
