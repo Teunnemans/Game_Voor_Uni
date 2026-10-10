@@ -39,9 +39,19 @@ class Spawner:
         # Richting, positie en snelheid, elke sprite moet dit hebben
         Position, Direction = Random_Outside_Position_And_Direction(False) # Diagonaal is False
         Speed = random.randint(100, 200)
+        # Welke sprite moet de spawner gebruiken?
+        SpriteDirection = ""
+        if Direction == (-1, 0): SpriteDirection = "LEFT"
+        elif Direction == (1, 0): SpriteDirection = "RIGHT"
+        elif Direction == (0, -1): SpriteDirection = "DOWN"
+        elif Direction == (0, 1): SpriteDirection = "UP"
+        elif Direction == (-1, -1): SpriteDirection = "LEFT-DOWN"
+        elif Direction == (1, 1): SpriteDirection = "RIGHT-UP"
+        elif Direction == (1, -1): SpriteDirection = "RIGHT-DOWN"
+        elif Direction == (-1, 1): SpriteDirection = "LEFT-UP"
 
         # Hoeveelheid enemies
         for i in range(Amount):
             SpawnPosition = Position - 3 * Direction * (i * 50) # offset tussen de enemies, 10 pixels speling
-            Group.append(SimpleEnemy(Constants.Images.Player, self._Game_Info._Game, SpawnPosition, Speed*Direction))
+            Group.append(SimpleEnemy(Constants.Images.Parallel_Enemy[SpriteDirection], self._Game_Info._Game, SpawnPosition, Speed*Direction))
         return Group

@@ -9,7 +9,21 @@ pygame.display.set_caption("Space Racer! :)")
 
 
 class Images:
+    # Player sprite
     Player = pygame.transform.scale(pygame.image.load("Art/Player.png"), (50, 50))
+
+    # Moving enemy sprite
+    Moving_Enemy = pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/player.png"),(50, 50))
+    Parallel_Enemy = {
+        "UP": pygame.transform.rotate(Moving_Enemy, -90),
+        "DOWN": pygame.transform.rotate(Moving_Enemy, 90),
+        "LEFT": pygame.transform.rotate(Moving_Enemy, 180),
+        "RIGHT": pygame.transform.rotate(Moving_Enemy, 0),
+        "LEFT-UP": pygame.transform.rotate(Moving_Enemy, 225),
+        "LEFT-DOWN": pygame.transform.rotate(Moving_Enemy, 135),
+        "RIGHT-UP": pygame.transform.rotate(Moving_Enemy, -45),
+        "RIGHT-DOWN": pygame.transform.rotate(Moving_Enemy, 45),
+    }
     Background =  pygame.transform.scale(pygame.image.load("Art/Background.jpg"), (500, 500))
     MainMenu = pygame.transform.scale(pygame.image.load("Art/MainMenu.jpg"), (500, 500))
     MainMenuBackGround = pygame.image.load("Art/Main-Menu-Image.png")
