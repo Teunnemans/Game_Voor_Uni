@@ -17,11 +17,12 @@ class UI_Manager(UI_Group):
         self.Game = Game
         self.Add_Element(Generate_Pause_Overlay(self)) # Genereert de pausedUIoverlay
         self.Add_Element(Generate_MainMenu(self)) # Genereert de mainmenu
+        self.Add_Element(Generate_Game_UI(self))
         # Paar debug statements, Laat statistieken van de speler zien
         if Constants.Game_Settings.Debug: self.Add_Element(Generate_Debug_Overlay(self))
 
-        # 1e scoreboard update # TODO maak deze persistent
-        UpdateScoreBoard(self)
+        # 1e scoreboard update
+        Update_ScoreBoard(self)
     # Update functie
     def Update(self, Eventstack):
         # De ui heeft toegang tot de pygame event queue. Hierdoor reageert de game op events.
@@ -41,8 +42,7 @@ class UI_Manager(UI_Group):
         # Debug statements updaten(Dit zou ook buiten de manager kunnen gebeuren dat is prima)
         if Constants.Game_Settings.Debug: Update_Debug_Overlay(self)
 
-        #TODO Game UI OVERLAY TOEVOEGEN
-
+        Update_Game_UI(self)
         # Daadwerkelijke update functie, update hoe dan ook heel de UI. Niet mega efficient, maar met weinig ui prima
         for Element in self.Elements: Element.Update(Eventstack)
 
@@ -52,9 +52,9 @@ class UI_Manager(UI_Group):
         match New_State:
             case Game_State.Main_Menu:
                 self.Get_Element("MainMenu_Ui").Visible = True
-                # self.Get_Element("Game_UI").Visible = False
+                self.Get_Element("Game_UI").Visible = False
             case Game_State.In_Game:
-                # self.Get_Element("Game_UI").Visible = True TODO MAAK DEZE
+                self.Get_Element("Game_UI").Visible = True
                 self.Get_Element("MainMenu_Ui").Visible = False
 
 # Functie voor het genereren van de UI van de pause_overlay
@@ -66,11 +66,8 @@ def Generate_Pause_Overlay(UIManager):
     PausedUi.Add_Element(Image(PausedUi, "PausedBackground", PausedOverlay, (0, 0)))
     PausedUi.Add_Element(Text_Element(PausedUi, "PauseText", "Gepauzeerd", (200, 230)))
     # Knoppen
-    PausedUi.Add_Element(
-        Button(UIManager, "MainMenuButton", pygame.Vector2(20, 102), pygame.Vector2(130, 50), pygame.transform.scale(Constants.Images.Player, (130, 50)), "Terug naar het menu"))
-    PausedUi.Add_Element(
-        Button(UIManager, "RestartButton", pygame.Vector2(20, 50), pygame.Vector2(130, 50),
-               pygame.transform.scale(Constants.Images.Player, (130, 50)), "Herstart het spel"))
+    PausedUi.Add_Element(Button(UIManager, "MainMenuButton", pygame.Vector2(20, 102), pygame.Vector2(50, 50), Constants.Images.Home))
+    PausedUi.Add_Element(Button(UIManager, "RestartButton", pygame.Vector2(20, 50), pygame.Vector2(50, 50),Constants.Images.Restart))
 
     return PausedUi
 # Main menu generatie
@@ -80,26 +77,15 @@ def Generate_MainMenu(UIManager):
     MainMenuUi.Add_Element(Button(UIManager, "PlayButton", Find_Center((100, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 120), (100, 50)))
     MainMenuUi.Add_Element(Button(UIManager, "QuitButton", (400, 450), (100, 50)))
     MainMenuUi.Add_Element(Button(UIManager, "FullscreenButton", pygame.Vector2(0,450), (50, 50)))
-    MainMenuUi.Add_Element(UI_Group(UIManager, "ScoreBoard", (30, 160)))
-    #MainMenuUi.Add_Element(Button(UIManager, "FullscreenButton", Find_Center((100, 50), UIManager.Game.Get_Screen().get_size()) + pygame.Vector2(0, 160), (100, 50), pygame.transform.scale(pygame.image.load("Art/Player.png"), (130, 50)), "Toggle Fullscreen"))
+    MainMenuUi.Add_Element(UI_Group(UIManager, "ScoreBoard", (30, 140)))
     return MainMenuUi
-
-# Rangschikt de scoreboard, slaat de scores op en displayt ze op het scherm
-def UpdateScoreBoard(UiManager):
-    ScoreBoard = UiManager.Get_Element("MainMenu_Ui").Get_Element("ScoreBoard")
-    # Cleart de scoreboard
-    ScoreBoard.Elements = []
-    Index = 0
-    Attempts = UiManager.Game.Attempts
-    # Sorteer de scoreboard op punten, met de meest punten op de bovenkant
-    Attempts.sort(key=lambda Attempt: Attempt["Weight"], reverse=True)
-    for Attempt in Attempts:
-        Index += 1
-        # Stop als er meer dan 10 punten zijn, anders loopt hij over de beschikbare ruimte heen.
-        if Index > 10: break
-        ScoreText = Text_Element(UiManager, f"Attempts{Index}", f"{Index}: {round(Attempt["Score"])} punten in {round(Attempt["Time_Survived"])} seconden", (30, 140 + (Index * 20)), Font=pygame.font.SysFont("Arial", 10))
-        ScoreBoard.Add_Element(ScoreText)
-
+# Genereer de game_UI
+def Generate_Game_UI(UIManager):
+    GameUi = UI_Group(UIManager, "Game_UI", (0, 0))
+    GameUi.Add_Element(Text_Element(GameUi, "Score", f"0", (195, 80), (255, 255, 255), Font=pygame.font.SysFont("Arial", 25, bold=True)))
+    # Ui group voor de Game-Ui
+    GameUi.Add_Element(UI_Group(GameUi, "Lives", (195, 50)))
+    return GameUi
 
 # Functie voor het genereren van de UI van de Debug_Overlay
 def Generate_Debug_Overlay(UIManager):
@@ -113,7 +99,32 @@ def Generate_Debug_Overlay(UIManager):
     DebugUi.Add_Element(Text_Element(DebugUi, "Score", f"Score:", (0, 130), (255, 0, 0)))
     DebugUi.Add_Element(Text_Element(DebugUi, "Entitylist", f"Entitylist:", (0, 150), (255, 0, 0)))
     return DebugUi
+# Update de ui tijdens het spelen van het spel
+def Update_Game_UI(UiManager):
+    GameUi = UiManager.Get_Element("Game_UI")
+    GameUi.Get_Element("Score").Text = f"{round(UiManager.Game.Get_GameInfo().Score)}"
 
+    LivesElement = GameUi.Get_Element("Lives")
+    LivesElement.Elements = []
+    for i in range(UiManager.Game.Get_GameInfo().Player.Lives):
+        LivesElement.Add_Element(Image(LivesElement, f"Life{i}", Constants.Images.Hartje, ((i * 20), 0)))
+
+# Rangschikt de scoreboard, slaat de scores op en displayt ze op het scherm
+def Update_ScoreBoard(UiManager):
+    ScoreBoard = UiManager.Get_Element("MainMenu_Ui").Get_Element("ScoreBoard")
+    # Cleart de scoreboard
+    ScoreBoard.Elements = []
+    Index = 0
+    Attempts = UiManager.Game.Attempts
+    # Sorteer de scoreboard op punten, met de meest punten op de bovenkant
+    Attempts.sort(key=lambda Attempt: Attempt["Weight"], reverse=True)
+    for Attempt in Attempts:
+        Index += 1
+        # Stop als er meer dan 10 punten zijn, anders loopt hij over de beschikbare ruimte heen.
+        if Index > 10: break
+        ScoreText = Text_Element(ScoreBoard, f"Attempts{Index}", f"{Index}: {round(Attempt["Score"])} punten in {round(Attempt["Time_Survived"])} seconden", (0, Index * 20), Font=pygame.font.SysFont("Arial", 10))
+        ScoreBoard.Add_Element(ScoreText)
+# Update alle debug-overlays
 def Update_Debug_Overlay(UiManager):
     DebugUi = UiManager.Get_Element("Debug_Ui")
     DebugUi.Get_Element("FPS").Text = f"FPS: {round(1 / UiManager.Game.Deltatime)}"

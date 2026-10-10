@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="Menu werkend en high score tabel">
+    <list default="true" id="3fe2f2e5-2e09-48b5-b31f-6a33886e2873" name="Changes" comment="Automatische high-score generatie :) Ook gewerkt aan UI">
+      <change afterPath="$PROJECT_DIR$/Art/Waar komt mijn kunst vandaan.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Art/Main-Menu-Image.png" beforeDir="false" afterPath="$PROJECT_DIR$/Art/Main-Menu-Image.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Constants.py" afterDir="false" />
@@ -12,91 +13,7 @@
       <change beforePath="$PROJECT_DIR$/Core/Game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Game.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/GameInfo.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/GameInfo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/UI/UI_Manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/Core/UI/UI_Manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/Analysis-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/COLLECT-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/EXE-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/PKG-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.pyz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/PYZ-00.toc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/base_library.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/main.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/main.pkg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/warn-main.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/main/xref-main.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/Art/Background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/Art/Player.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/SDL2.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/SDL2_image.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/SDL2_mixer.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/SDL2_ttf.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/VCRUNTIME140.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/VCRUNTIME140_1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/_bz2.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/_ctypes.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/_decimal.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/_hashlib.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/_lzma.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/_queue.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/_socket.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/_uuid.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/_wmi.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/base_library.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/freetype.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/libcrypto-3.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/libffi-8.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/libjpeg-9.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/libmodplug-1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/libogg-0.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/libopus-0.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/libopusfile-0.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/libpng16-16.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/libtiff-5.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/libwebp-7.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/portmidi.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/SDL2.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/SDL2_image.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/SDL2_mixer.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/SDL2_ttf.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/_freetype.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/base.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/bufferproxy.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/color.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/constants.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/display.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/draw.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/event.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/font.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/freesansbold.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/freetype.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/image.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/imageext.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/joystick.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/key.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/libjpeg-9.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/libogg-0.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/libopus-0.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/libpng16-16.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/mask.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/math.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/mixer.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/mixer_music.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/mouse.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/pixelarray.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/pixelcopy.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/pygame_icon.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/rect.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/rwobject.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/scrap.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/surface.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/surflock.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/time.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/transform.cp313-win_amd64.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/pygame/zlib1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/python313.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/select.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/unicodedata.pyd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/_internal/zlib1.dll" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/main/main.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scores.json" beforeDir="false" afterPath="$PROJECT_DIR$/Scores.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -105,7 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="121" />
+    <option name="cachedIndexableFilesCount" value="37" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -162,61 +79,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0001657760841451" />
-      <entry key="S2" value="1.381880648453378" />
-      <entry key="S5" value="3.388425705577672" />
-      <entry key="S10" value="5.583242631975042" />
-      <entry key="S30" value="8.168211591897265" />
-      <entry key="S60" value="9.051476368190484" />
-      <entry key="M2" value="10.202359016394299" />
-      <entry key="M5" value="20.77395650920305" />
-      <entry key="M10" value="52.353518437975126" />
-      <entry key="M15" value="86.33734229607073" />
-      <entry key="M30" value="174.36679092960648" />
-      <entry key="H1" value="307.5477824177692" />
-      <entry key="H2" value="485.1081939517881" />
-      <entry key="H4" value="803.0211861747555" />
-      <entry key="D1" value="4105.877100578692" />
-      <entry key="W1" value="7081.9979917864885" />
+      <entry key="MS100" value="1.0000000000035385" />
+      <entry key="MS500" value="1.0051258252132498" />
+      <entry key="S2" value="1.2675721746097042" />
+      <entry key="S5" value="1.5902290270341584" />
+      <entry key="S10" value="1.7852572803326368" />
+      <entry key="S30" value="2.6651240109265366" />
+      <entry key="S60" value="3.901405042752508" />
+      <entry key="M2" value="5.3015546076744" />
+      <entry key="M5" value="8.626981760681264" />
+      <entry key="M10" value="18.084404548204766" />
+      <entry key="M15" value="32.80649551628056" />
+      <entry key="M30" value="94.95971491533592" />
+      <entry key="H1" value="228.43561962637955" />
+      <entry key="H2" value="433.9965372553176" />
+      <entry key="H4" value="775.8935524290116" />
+      <entry key="D1" value="4098.648742834448" />
+      <entry key="W1" value="7162.961106583269" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="9.654717594998839E-300" />
-      <entry key="S2" value="2.4253760787564483E-75" />
-      <entry key="S5" value="2.1048485360509705E-30" />
-      <entry key="S10" value="2.0424417727126365E-15" />
-      <entry key="S30" value="2.0120038892114932E-5" />
-      <entry key="S60" value="0.0063518522372000355" />
-      <entry key="M2" value="0.11672137875081597" />
-      <entry key="M5" value="0.972042334313033" />
-      <entry key="M10" value="3.6278923252164796" />
-      <entry key="M15" value="7.3020191272843205" />
-      <entry key="M30" value="20.25174881894408" />
-      <entry key="H1" value="44.71076708458181" />
-      <entry key="H2" value="79.31927644194306" />
-      <entry key="H4" value="137.3586861978206" />
-      <entry key="D1" value="575.5963537743239" />
-      <entry key="W1" value="917.8498680434775" />
+      <entry key="MS100" value="8.643218120439996E-6" />
+      <entry key="MS500" value="0.09819900841985864" />
+      <entry key="S2" value="0.7392554360310819" />
+      <entry key="S5" value="1.3122084800667382" />
+      <entry key="S10" value="1.8135350719960444" />
+      <entry key="S30" value="3.0939323210591145" />
+      <entry key="S60" value="3.8533926209637803" />
+      <entry key="M2" value="4.37380211599691" />
+      <entry key="M5" value="5.207171207384004" />
+      <entry key="M10" value="7.5981497917719505" />
+      <entry key="M15" value="10.545686650844214" />
+      <entry key="M30" value="20.65882576992685" />
+      <entry key="H1" value="42.983387378219966" />
+      <entry key="H2" value="80.14382511929364" />
+      <entry key="H4" value="141.55662539403193" />
+      <entry key="D1" value="587.044119806819" />
+      <entry key="W1" value="942.0666710733825" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9330329915368074" />
-      <entry key="MS500" value="0.9863962270816902" />
-      <entry key="S2" value="1.3772065182332136" />
-      <entry key="S5" value="3.3840817376353325" />
-      <entry key="S10" value="5.57973646930484" />
-      <entry key="S30" value="8.166541892192747" />
-      <entry key="S60" value="9.056765841907998" />
-      <entry key="M2" value="10.317117378361136" />
-      <entry key="M5" value="21.737957910922297" />
-      <entry key="M10" value="55.96318939576561" />
-      <entry key="M15" value="93.61409112295249" />
-      <entry key="M30" value="194.58476959765798" />
-      <entry key="H1" value="352.2236373758339" />
-      <entry key="H2" value="564.3978616725377" />
-      <entry key="H4" value="940.3553510590933" />
-      <entry key="D1" value="4681.455406760802" />
-      <entry key="W1" value="7999.843584474778" />
+      <entry key="MS100" value="3.866660875930421E-5" />
+      <entry key="MS500" value="0.16581636439426278" />
+      <entry key="S2" value="1.3645152003542564" />
+      <entry key="S5" value="2.516747812067157" />
+      <entry key="S10" value="3.3490349995025546" />
+      <entry key="S30" value="5.621614951260337" />
+      <entry key="S60" value="7.667368116465932" />
+      <entry key="M2" value="9.624576100917592" />
+      <entry key="M5" value="13.808922810082159" />
+      <entry key="M10" value="25.66200480243585" />
+      <entry key="M15" value="43.331291621873525" />
+      <entry key="M30" value="115.594050679826" />
+      <entry key="H1" value="271.3905907421332" />
+      <entry key="H2" value="514.1129507073547" />
+      <entry key="H4" value="917.4260331816082" />
+      <entry key="D1" value="4685.674698329343" />
+      <entry key="W1" value="8105.023429441819" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -397,7 +314,11 @@
       <workItem from="1791447759609" duration="138000" />
       <workItem from="1791452972503" duration="777000" />
       <workItem from="1791459096143" duration="5730000" />
-      <workItem from="1791482768483" duration="2728000" />
+      <workItem from="1791482768483" duration="3799000" />
+      <workItem from="1791528237104" duration="398000" />
+      <workItem from="1791546996721" duration="899000" />
+      <workItem from="1791572484190" duration="323000" />
+      <workItem from="1791636460414" duration="3614000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit :)">
       <option name="closed" value="true" />
@@ -607,7 +528,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791464457449</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Automatische high-score generatie :) Ook gewerkt aan UI">
+      <option name="closed" value="true" />
+      <created>1791485678421</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1791485678421</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -625,7 +554,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="project staat klaar voor maken" />
     <MESSAGE value="Basis entity systeem, klaar voor speler" />
     <MESSAGE value="Speler + Verbeteringen yo" />
     <MESSAGE value="Meer basis, goede documentatie en speler movement met accleratie yeah" />
@@ -650,7 +578,8 @@
     <MESSAGE value="Werkende dynamische achtergrond!! Basis voor main menu" />
     <MESSAGE value="Versimpeling" />
     <MESSAGE value="Menu werkend en high score tabel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Menu werkend en high score tabel" />
+    <MESSAGE value="Automatische high-score generatie :) Ook gewerkt aan UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Automatische high-score generatie :) Ook gewerkt aan UI" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Game.coverage" NAME="Game Coverage Results" MODIFIED="1791312635793" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core" />
@@ -659,7 +588,7 @@
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Spawner.coverage" NAME="Spawner Coverage Results" MODIFIED="1791324057833" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core/Entities" />
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Entity.coverage" NAME="Entity Coverage Results" MODIFIED="1790169516184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Game_Uni_Real$GameInfo.coverage" NAME="GameInfo Coverage Results" MODIFIED="1790618342773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core" />
-    <SUITE FILE_PATH="coverage/Game_Uni_Real$main.coverage" NAME="main Coverage Results" MODIFIED="1791485245255" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Game_Uni_Real$main.coverage" NAME="main Coverage Results" MODIFIED="1791640085909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Game_Uni_Real$AdelheidOefening.coverage" NAME="AdelheidOefening Coverage Results" MODIFIED="1791459303986" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Game_Uni_Real$Player.coverage" NAME="Player Coverage Results" MODIFIED="1791378729147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Core/Entities" />
   </component>

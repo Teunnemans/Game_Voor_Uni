@@ -7,7 +7,7 @@ from Core.Functions import Find_Center, WriteHighScoreFile
 from Core.Entities.Player import Player
 from Core.Entities.Entity import Entity
 from Core.Functions import Generate_Background
-from Core.UI.UI_Manager import UpdateScoreBoard
+from Core.UI.UI_Manager import Update_ScoreBoard
 
 
 class GameInfo:
@@ -39,7 +39,7 @@ class GameInfo:
         self.Score = 0 # na 180 seconden 5000 punten. Dus 180/5000 punten/seconden erbij
 
         # Speler van het spel, aparte class die boven alle andere logica staat
-        self.Player = Player(Constants.Images.Player, self._Game, Find_Center(pygame.Vector2(50, 50), pygame.Vector2(500, 500)))
+        self.Player = Player(Constants.Images.Player_Image, self._Game, Find_Center(pygame.Vector2(50, 50), pygame.Vector2(500, 500)))
 
         #self.EntityList.append(TestEntity(Constants.Images.Player, self._Game, Find_Center(pygame.Vector2(50, 50), pygame.Vector2(500, 500))))
 
@@ -58,14 +58,13 @@ class GameInfo:
             # Update alle entities in het spel
             for Entity in self.EntityList:
                 Entity.Update(Eventstack)
-
-            self.Score += (5000/180) * self._Game.Deltatime # zie score init voor definitie
+            if self.Player.Lives > 0:
+                self.Score += (5000/180) * self._Game.Deltatime # zie score init voor definitie
             self.Time_Since_Game_Start += self._Game.Deltatime
             self.Update_Background()
         # TODO HIER MOET NOG SPEL LOGICA
     # Alle logica voor het tekenen op het scherm.
     def Draw(self):
-        #TODO Dynamische ACHTERGROND
         self.Player.Draw() # Player Draw Update
         # Teken alle entities in het spel.
         for Entity in self.EntityList:
@@ -116,5 +115,5 @@ class GameInfo:
         # Weight voor de ranking
         self._Game.Attempts.append({"Score" : self.Score, "Time_Survived" : self.Time_Since_Game_Start, "Weight":self.Score*self.Time_Since_Game_Start})
         self._Game.Set_State(Constants.Game_State.Main_Menu)
-        UpdateScoreBoard(self._Game.Get_Ui_Manager())
+        Update_ScoreBoard(self._Game.Get_Ui_Manager())
         WriteHighScoreFile(self._Game.Attempts)

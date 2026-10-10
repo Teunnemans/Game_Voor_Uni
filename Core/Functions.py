@@ -64,7 +64,7 @@ def Generate_Background():
     # Wat ik daarvoor bedacht had.
 
     # Sterren genereren
-    StarAmount = 500
+    StarAmount = 250
     for i in range(StarAmount):
         x = random.randint(3, 497)
         y = random.randint(3, 497)

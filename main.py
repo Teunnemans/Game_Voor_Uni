@@ -11,6 +11,7 @@ Screen = pygame.display.set_mode(Constants.Game_Settings.Screen_Size, Flags)
 
 #Initialisatie van de game! :)
 _Game = Game(Screen)
+
 # Core loop met exit conditie
 while True:
     # Haalt eens per frame alle Events op

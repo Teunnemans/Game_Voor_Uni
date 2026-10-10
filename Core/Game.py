@@ -25,6 +25,9 @@ class Game:
         self._GameInfo = GameInfo(self) # Gameinfo object die zich elke ronde reset.
         self._UI_Manager = UI_Manager(self) # UI manager
 
+        # Update ook meteen de state, zodat de ui manager de juiste ui kan tonen
+        self.Set_State(self._State)
+
 
     # Deltatime update, update ook de pygame clock
     def Update_Deltatime(self):
