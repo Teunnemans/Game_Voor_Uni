@@ -1,28 +1,31 @@
 # Een wrapper voor entity, met wat toegevoegde functionaliteit
 import random
-from Core.Functions import Clamp_Vector
+
+from pygame.sprite import Sprite
+
+from Core.Functions import Clamp_Vector, Scale_Rect_From_Center
 import pygame
 from Core import Constants
 from Core.Entities.Entity import Entity
 import math
 
 class EnemyBase(Entity):
-    def __init__(self, Sprite, Game, Position):
+    def __init__(self, Sprite, Game, Position, Speed=pygame.Vector2(0, 0)):
         super().__init__(Sprite, Game, Position, True)
 
         # Lijkt veel op de Player Class, Movement die je KAN gebruiken voor de Enemy Gedrag verder aan te vullen
 
         # Hoe snel beweegt de Enemy?
-        self.Speed = pygame.Vector2(0, 0)
+        self.Speed = Speed
         self.MaxSpeed = self.Speed # Moet altijd een pygame vector zijn
         # Hoe snel versnelt de Enemy?
         self.Acceleration = None
 
-
         self.Type = Constants.EnemyTypes.Standard
 
     def Update(self, Eventstack):
-        super().Update(Eventstack)
+        # Update de rect, en schaal de hitbox naar 95% van de normale grootte voor de eerlijkheid van het spel, 10px marge zo
+        self.Rect = Scale_Rect_From_Center(pygame.Rect(self.Position, self.Size), 0.95)
         self.Handle_Behaviour(Eventstack)
 
 
@@ -55,56 +58,49 @@ class EnemyBase(Entity):
 
 # POWERUPS
 class ClearingBomb(EnemyBase):
-    def __init__(self, Sprite, Game, Position):
-        super().__init__(Sprite, Game, Position)
+    def __init__(self, Game, Position, Speed = 0):
+        super().__init__(Constants.Images.Clearing_Bomb_Sprite, Game, Position, Speed)
         self.Type = Constants.EnemyTypes.PowerUp
 
+
     def Handle_Collision(self, Other_Entity):
-        for Entity in self._Game.Get_GameInfo().EntityList:
-            # Cleart elke entity behalve de powerups
-            if Entity.Type is not Constants.EnemyTypes.PowerUp:
-                Entity.Kill()
-        self.Kill()
+        self._Game.Get_GameInfo().Score += 50 * len(self._Game.Get_GameInfo().EntityList)
+        self._Game.Get_GameInfo().EntityList = [] # Verwijdert elke entity van de lijst, scherm wordt leeg.
 # 1 extra leven :)
 class Heart(EnemyBase):
-    def __init__(self, Sprite, Game, Position):
-        super().__init__(Sprite, Game, Position)
+    def __init__(self, Game, Position, Speed=0, Direction=pygame.Vector2(0, 0)):
+        super().__init__(Constants.Images.Heart_PowerUp, Game, Position, Speed)
         self.Type = Constants.EnemyTypes.PowerUp
 
     def Handle_Collision(self, Other_Entity):
-        Other_Entity.Lives += 1
+        # Update score als winst :)
+        self._Game.Get_GameInfo().Score += 500
+        if Other_Entity.Lives < 5:
+            Other_Entity.Lives += 1
         self.Kill()
-# 1 minder leven :( Lijkt op een powerup, maar is dit niet.
-class HurtingBomb(EnemyBase):
-    def __init__(self, Sprite, Game, Position, Visible: bool = True):
-        super().__init__(Sprite, Game, Position)
-        self.Type = Constants.EnemyTypes.PowerUp
-    def Handle_Collision(self, Other_Entity):
-        super().Handle_Collision(Other_Entity)
-        self.Kill()
-# ENEMIES
 
-# Even kijken of mijn functionaliteiten werken
+# Super basic enemy die gewoon beweegt
 class SimpleEnemy(EnemyBase):
-    def __init__(self, Sprite, Game, Position, Speed):
-        super().__init__(Sprite, Game, Position)# anders scalair
-        self.Speed = Speed
+    def __init__(self, Sprite, Game, Position, Speed= pygame.Vector2(0, 0)):
+        super().__init__(Sprite, Game, Position, Speed)# Sprite van deze is in principe onbepaald tot zijn richting bepaald is
         self.Type = Constants.EnemyTypes.Enemy
+
 # Beweegt naar je toe terwijl hij valt
 class TailGater(EnemyBase):
-    def __init__(self, Sprite, Game, Position, Speed):
-        super().__init__(Sprite, Game, Position)
+    def __init__(self, Game, Position, Speed=pygame.Vector2(0, 0)):
+        super().__init__(Constants.Images.Tailgater_Enemy, Game, Position, Speed)
         # Slome accleratie
         self.Acceleration = pygame.Vector2(1000, 0)
-        self.MaxSpeed = pygame.Vector2(Speed, self.Speed.y)
+        #self.MaxSpeed = pygame.Vector2(Speed, self.Speed.y)
         self.Type = Constants.EnemyTypes.Enemy
 
-    def Handle_Behaviour(self, Eventstack):
+    def Handle_Behaviour(self, Eventstack): # TODO FIX
         DeltaX = self.Position.x - self._Game.Get_GameInfo().Player.Position.x
         # Kiest richting om in te bewegen
         if DeltaX > 0: Direction = pygame.Vector2(-1, 0)
         elif DeltaX < 0: Direction = pygame.Vector2(1, 0)
         else: Direction = pygame.Vector2(0, 0)
+        self.Speed = self.Speed
         # Elementwise omdat hij anders het inproduct berekent en de snelheid omzet naar een scalar. Kostte mij veel debugtijd
         self.Speed += (Direction * self.Acceleration.elementwise() * self._Game.Deltatime)
         # Frictie
@@ -113,10 +109,11 @@ class TailGater(EnemyBase):
 
         super().Handle_Behaviour(Eventstack)
 
-class OscilatingEnemy(EnemyBase):
-    def __init__(self, Sprite, Game, Position):
-        super().__init__(Sprite, Game, Position)
-        self.Speed.y = 110
+# Beweegt heen en weer als vijandig patroon
+class OscilatingEnemy(EnemyBase): #TODO FIX
+    def __init__(self, Game, Position, Speed=pygame.Vector2(0, 0)):
+        super().__init__(Constants.Images.Oscillating_Enemy, Game, Position, Speed)
+        self.Speed = Speed
         self.Type = Constants.EnemyTypes.Enemy
         self.Start_Position = Position.copy()
 
@@ -125,7 +122,6 @@ class OscilatingEnemy(EnemyBase):
         self.Frequency = random.uniform(1, 3)
         self.Phase = random.uniform(0, 2 * math.pi)
     def Handle_Behaviour(self, Eventstack):
-
         # Random periode, amplitude en random startpositie
         self.Position.x = (
                 self.Start_Position.x +

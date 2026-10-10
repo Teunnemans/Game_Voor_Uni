@@ -9,11 +9,15 @@ pygame.display.set_caption("Space Racer! :)")
 
 
 class Images:
-    # Player sprite
-    Player = pygame.transform.scale(pygame.image.load("Art/Player.png"), (50, 50))
 
+    # Clearing Bomb sprite
+    Clearing_Bomb_Sprite = pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/Clearing-Bomb.png"), (50, 50))
+    Heart_PowerUp = pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/Heart-Powerup.png"), (50, 50))
     # Moving enemy sprite
     Moving_Enemy = pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/player.png"),(50, 50))
+    # Oscilating enemy sprite
+    Oscillating_Enemy = pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/Oscilating-Enemy.png"), (50, 50))
+    Tailgater_Enemy = pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/Tailgater-Enemy.png"), (50, 50))
     Parallel_Enemy = {
         "UP": pygame.transform.rotate(Moving_Enemy, -90),
         "DOWN": pygame.transform.rotate(Moving_Enemy, 90),
@@ -24,8 +28,7 @@ class Images:
         "RIGHT-UP": pygame.transform.rotate(Moving_Enemy, -45),
         "RIGHT-DOWN": pygame.transform.rotate(Moving_Enemy, 45),
     }
-    Background =  pygame.transform.scale(pygame.image.load("Art/Background.jpg"), (500, 500))
-    MainMenu = pygame.transform.scale(pygame.image.load("Art/MainMenu.jpg"), (500, 500))
+
     MainMenuBackGround = pygame.image.load("Art/Main-Menu-Image.png")
     Hartje = pygame.image.load("Art/Hartje.png")
     Player_Image = pygame.transform.scale(pygame.image.load("Art/Player-Rocket.png"), (50, 50))

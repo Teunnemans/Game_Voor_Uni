@@ -23,7 +23,7 @@ class Player(Entity):
         self.Hit_Interval = 1.5 # 3 Seconden immuun na hit
         self.Hit_Timer = 0
         self.Hit = False
-        self.Lives = 5 # 5 Levens als standaard
+        self.Lives = 3 # 3 Levens als standaard
         self.Blink_Timer = 0
         self.Blink_Interval = 0.2
         self.Death_Time = 3

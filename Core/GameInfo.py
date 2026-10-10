@@ -45,7 +45,8 @@ class GameInfo:
 
         # Tijd sinds Game_Start
         self.Time_Since_Game_Start = 0
-
+    def Get_Game(self):
+        return self._Game
     # Alle logica voor het updaten van het spel
     def Update(self, Eventstack):
         self.HandlePause(Eventstack)

@@ -107,3 +107,12 @@ def WriteHighScoreFile(HighScoreList):
     with open("Scores.json", "w") as file:
         print("Bestand geschreven!")
         json.dump(HighScoreList, file)
+
+
+# Schaalt een rect naar een nieuwe schaal, deze functie gebruik ik om de hitboxes van de enemies iets kleiner te maken, en het
+# spel hierdoor wat leuker te maken.
+def Scale_Rect_From_Center(rect, Scaling):
+    Center = rect.center
+    New_rect = pygame.Rect(0, 0, rect.width * Scaling, rect.height * Scaling)
+    New_rect.center = Center
+    return New_rect
