@@ -64,9 +64,9 @@ als multiplayer en animaties toe te voegen. Puur omdat ik dit zo'n leuke opdrach
 en kan met trots zeggen dat ik mijn eigen mini-game geschreven heb :) Ik nodig u uit om op uw gemak door de code heen te lopen. Ik 
 hoop dat er voldoende gedocumenteerd is. Ook heb ik een .exe build toegevoegd, die het delen van het spel gemakkelijker zou moeten maken!
 
-Er is bij dit project geen ai gebruikt voor het ontwerp van het spel, de codestructuur, de muziek, de sprites/andere Art. 
+Er is bij dit project geen AI gebruikt voor het ontwerp van het spel, de codestructuur, de muziek, de sprites/andere Art. 
 Features en code zijn allemaal met de menselijke hand geschreven. Ik heb een bloedhekel aan AI en geloof in authenticiteit en de menselijke geest.
-Dit project is mij iets waard om ik het gemaakt heb. 
+Dit project is mij iets waard omdat ik het gemaakt heb. Geen AI. 
 
 Waar wel AI gebruikt is is bij triviale debugging. Dit in de vorm van de autocomplete van Pycharm en het opsturen van probleembeschrijving naar ChatGPT.
 
