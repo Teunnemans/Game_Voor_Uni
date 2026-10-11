@@ -66,7 +66,7 @@ hoop dat er voldoende gedocumenteerd is. Ook heb ik een .exe build toegevoegd, d
 
 Er is bij dit project geen AI gebruikt voor het ontwerp van het spel, de codestructuur, de muziek, de sprites/andere Art. 
 Features en code zijn allemaal met de menselijke hand geschreven. Ik heb een bloedhekel aan AI en geloof in authenticiteit en de menselijke geest.
-Dit project is mij iets waard omdat ik het gemaakt heb. Geen AI. 
+Dit project is mij iets waard omdat ik het gemaakt heb. Geen AI. Geraadpleegde bronnen zijn: W3Schools, Reddit, Stackoverflow, pygame-docs, python-docs
 
 Waar wel AI gebruikt is is bij triviale debugging. Dit in de vorm van de autocomplete van Pycharm en het opsturen van probleembeschrijving naar ChatGPT.
 
