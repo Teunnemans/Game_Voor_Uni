@@ -18,7 +18,7 @@ class Player(Entity):
         self.CollidingList = []
 
         # Alle collider logica.
-        self.Hit_Interval = 1.5 # 3 Seconden immuun na hit
+        self.Hit_Interval = 2 # 2 Seconden immuun na hit
         self.Hit_Timer = 0
         self.Hit = False
         self.Lives = 3 # 3 Levens als standaard
@@ -45,7 +45,7 @@ class Player(Entity):
         # Elementwise omdat hij anders het inproduct berekent en de snelheid omzet naar een scalar. Kostte mij veel debugtijd
         self.Speed += (Direction * self.Acceleration.elementwise() * self._Game.Deltatime)
         # Frictie
-        self.Speed *= max(0, 1 - self._Game.Get_GameInfo().Friction * self._Game.Deltatime)
+        self.Speed *= max(0, 1 - Constants.Game_Settings.Friction * self._Game.Deltatime)
         self.Speed = Clamp_Vector(self.Speed, -self.MaxSpeed, self.MaxSpeed) # Houdt de snelheid van de spelers binnen de kaders van het spel.
 
         # Trekkracht, "Remt" de auto af als hij niet actief versnelt.
@@ -56,7 +56,7 @@ class Player(Entity):
         # Houdt de speler binnen de kaders van het spel.
         self.Position = Clamp_Vector(self.Position, pygame.Vector2(0, 0), pygame.Vector2(self._Game.Get_Screen().get_size()) - (1, 1) * self.Size.elementwise())
 
-    # Player side collision handling
+    # Player side collision handling, elke entity heeft een handle collision functie geïmplementeerd
     def Update_Collision(self):
         self.CollidingList = []
         for Entity in self._Game.Get_GameInfo().EntityList:
@@ -100,7 +100,4 @@ class Player(Entity):
                 self.FadingMusic = True
             if self.Death_Timer > self.Death_Time:
                 self._Game.Get_GameInfo().End_Game()
-
-    def Draw(self):
-        super().Draw()
 

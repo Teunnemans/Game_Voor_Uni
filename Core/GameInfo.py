@@ -5,7 +5,6 @@ import pygame
 from Core.Entities.Spawner import Spawner
 from Core.Functions import Find_Center, WriteHighScoreFile
 from Core.Entities.Player import Player
-from Core.Entities.Entity import Entity
 from Core.Functions import Generate_Background
 
 
@@ -13,9 +12,9 @@ class GameInfo:
     def __init__(self, Game):
         self._Game = Game # Verwijzing naar boven.
 
-        # Staat de game op pauze? Kan om veel redenen. Ui past zich hierop aan, en en de updates worden ook op pauze gezet
+        # Staat de game op pauze? Kan om veel redenen. Ui past zich hierop aan, en de updates worden ook op pauze gezet
         self.Paused = False
-        self.ShouldToggle = True
+        self.ShouldToggle = True # Zodat hij niet elke frame toggled
 
         # Dynamische background logica, functioneel geproduceerd
         self.Backgrounds = []
@@ -24,9 +23,7 @@ class GameInfo:
             Background[1] = pygame.Vector2(0, -500 + (x * 500))
             self.Backgrounds.append(Background)
 
-        self.Background_Speed = pygame.Vector2(0, 150)
-        # Core properties
-        self.Friction = 7
+        self.Background_Speed = pygame.Vector2(0, 150) # snelheid van de achtergrond
 
         # Een grote lijst met allemaal Entity-Class objecten. Kan hier iteratief alle Draw() en Update() functies uitvoeren
         # Speler staat hier NIET in, die staat een laag hoger, in Game, omdat er maar 1 speler is. Onderlinge collision is hier door niet mogelijk, maar het is wel efficient
@@ -40,8 +37,10 @@ class GameInfo:
 
         # Tijd sinds Game_Start
         self.Time_Since_Game_Start = 0
-    def Get_Game(self):
-        return self._Game
+
+    # Get functie voor beschermde variable _game
+    def Get_Game(self): return self._Game
+
     # Alle logica voor het updaten van het spel
     def Update(self, Eventstack):
         self.HandlePause(Eventstack)
@@ -49,7 +48,6 @@ class GameInfo:
         if not self.Paused:
             # Enemy spawning update
             self.Spawner.Update()
-
             self.Player.Update(Eventstack) # Player Update
             # Update alle entities in het spel
             for Entity in self.EntityList:
@@ -65,8 +63,8 @@ class GameInfo:
         for Entity in self.EntityList:
             Entity.Draw()
 
+    # Update de positie van de achtergronden, is de achtergrond van het scherm af? Genereer een nieuwe
     def Update_Background(self):
-        # Update de positie van de achtergronden, is de achtergrond van het scherm af? Genereer een nieuwe
         Index = 0 # Indexeren yeahh
         for Background in self.Backgrounds:
             Background[1] += self.Background_Speed * self._Game.Deltatime
@@ -77,8 +75,9 @@ class GameInfo:
             Index += 1
         # Snelheid van de backgrounds schaalt met de score
         self.Background_Speed = pygame.Vector2(0, 150 + (self.Score / 10) + self.Time_Since_Game_Start)
+
+    # Genereert de hele achtergrond, die de renderer dan weer blit. Wordt uiteindelijk gerendered in Game
     def Get_Background(self):
-        # Genereert de hele achtergrond, die de renderer dan weer blit.
         FullBackGround = pygame.Surface((500, 1000))
         for Background in self.Backgrounds:
             # Rendert de 2 achtergronden
@@ -98,8 +97,9 @@ class GameInfo:
                 self._Game.Get_Audio_Manager().Play_Sound("Button_Click")
             elif Event.type == pygame.KEYUP and ((Event.key == pygame.K_ESCAPE) or (Event.key == pygame.K_p)):
                 self.ShouldToggle = True
+
     # Kan én 1 entity toevoegen, of een groep van entities
-    def Add_Entity(self, Entity: Entity|list):
+    def Add_Entity(self, Entity):
         if type(Entity) is list:
             self.EntityList.extend(Entity)
             return
@@ -109,7 +109,7 @@ class GameInfo:
     def Remove_Entity(self, Entity):
         self.EntityList.remove(Entity)
 
-    # Terug naar het menu.
+    # Terug naar het menu. Schrijft de score op in een json en doet wat met de muziek
     def End_Game(self):
         # Highscore voor de ranking
         self._Game.Attempts.append({"Score" : self.Score, "Time_Survived" : self.Time_Since_Game_Start})

@@ -1,4 +1,4 @@
-import pygame, uuid
+import pygame
 # Coole entity class die een basis vormt voor objecten in het spel. Bevat veel informatie
 # Die gebruikt kan worden bij andere classes waar hij op doorbouwt.
 class Entity:
@@ -6,9 +6,6 @@ class Entity:
         # Een reference naar de Globale _Game variable. Niets in aanpassen,
         # maar kan wel informatie opvragen en functies uitvoeren
         self._Game = _Game
-
-        # Een unieke code Specifiek tot DIE entity, gebruikt voor identificatie.
-        self.ID = uuid.uuid4()
 
         # "Plaatje" van de entity, TODO Vervangen voor een animatiesysteem (OBV states die de speler aan kan nemen)
         self.Sprite = Game_Sprite

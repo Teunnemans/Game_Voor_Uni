@@ -21,12 +21,9 @@ class EnemyBase(Entity):
         self.Type = Constants.EnemyTypes.Standard
 
     def Update(self, Eventstack):
-        # Update de rect, en schaal de hitbox naar 95% van de normale grootte voor de eerlijkheid van het spel, 10px marge zo
+        # Update de rect, en schaal de hitbox naar 90% van de normale grootte voor de eerlijkheid van het spel, 10px marge zo
         self.Rect = Scale_Rect_From_Center(pygame.Rect(self.Position, self.Size), 0.90)
         self.Handle_Behaviour(Eventstack)
-
-    def Draw(self):
-        super().Draw()
 
     # Verwijdert zichzelf uit de gameinfo
     def Kill(self):
@@ -54,6 +51,7 @@ class EnemyBase(Entity):
             self.Kill()
 
 # POWERUPS
+# Verwijdert alle entitys uit de gameinfo, en geeft score obv hoeveel entitys er zijn
 class ClearingBomb(EnemyBase):
     def __init__(self, Game, Position, Speed = 0):
         super().__init__(Constants.Images.Clearing_Bomb_Sprite, Game, Position, Speed)
@@ -65,7 +63,7 @@ class ClearingBomb(EnemyBase):
         self._Game.Get_Audio_Manager().Play_Sound("Clearing_Bomb")
 # 1 extra leven :)
 class Heart(EnemyBase):
-    def __init__(self, Game, Position, Speed=0, Direction=pygame.Vector2(0, 0)):
+    def __init__(self, Game, Position, Speed=0):
         super().__init__(Constants.Images.Heart_PowerUp, Game, Position, Speed)
         self.Type = Constants.EnemyTypes.PowerUp
 
@@ -77,13 +75,13 @@ class Heart(EnemyBase):
         self.Kill()
         self._Game.Get_Audio_Manager().Play_Sound("Health")
 
-# Super basic enemy die gewoon beweegt
+# Super basic enemy die gewoon beweegt, heeft een richting en beweegt bijna altijd in een groep
 class SimpleEnemy(EnemyBase):
     def __init__(self, Sprite, Game, Position, Speed= pygame.Vector2(0, 0)):
         super().__init__(Sprite, Game, Position, Speed)# Sprite van deze is in principe onbepaald tot zijn richting bepaald is
         self.Type = Constants.EnemyTypes.Enemy
 
-# Beweegt naar je toe terwijl hij valt
+# Beweegt naar je toe terwijl hij valt, goed voor opassen
 class TailGater(EnemyBase):
     def __init__(self, Sprite, Game, Position, Speed=pygame.Vector2(0, 0)):
         super().__init__(Sprite, Game, Position, Speed)
@@ -114,8 +112,8 @@ class TailGater(EnemyBase):
 
 
 
-# Beweegt heen en weer als vijandig patroon
-class OscilatingEnemy(EnemyBase): #TODO FIX
+# Beweegt heen en weer als vijandig patroon, gebruikt gonio voor de verplaatsing
+class OscilatingEnemy(EnemyBase):
     def __init__(self, Sprite, Game, Position, Speed=pygame.Vector2(0, 0)):
         super().__init__(Sprite, Game, Position, Speed)
         self.Speed = Speed
@@ -127,7 +125,6 @@ class OscilatingEnemy(EnemyBase): #TODO FIX
         self.Amplitude = random.randint(50, 100)
         self.Frequency = random.uniform(1, 3)
         self.Phase = random.uniform(0, 2 * math.pi)
-
 
         # Eenheidsvector van de bewegingsrichting
         Direction = Speed.normalize() if Speed.length_squared() > 0 else pygame.Vector2(0, 1)

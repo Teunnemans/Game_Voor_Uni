@@ -68,5 +68,6 @@ class Game_Settings:
     Start_Fullscreen = True
     Screen_Size = (500, 500)
     Debug = False
-    Standard_Font = pygame.font.SysFont("Arial", 20)
+    Standard_Font = pygame.font.SysFont("Arial", 20, bold=True)
 
+    Friction = 7 # Wrijvingswaarde

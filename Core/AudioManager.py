@@ -13,13 +13,13 @@ class Audio_Manager:
         self.Load_Sound("Clearing_Bomb", "Clearing_Bomb.ogg", 0.2)
 
     # Laad en speelt de muziek af
-    def Play_Music(self, Filename, Volume=1):
+    def Play_Music(self, Filename, Volume=1.0):
         pygame.mixer.music.load(f"Art/SFX/{Filename}")
         pygame.mixer.music.set_volume(Volume)
         pygame.mixer.music.play(-1)  # -1 = oneindig herhalen, zodat je niet steeds de muziek opnieuw moet oproepen
 
     # Voorladen van alle geluidsbestanden
-    def Load_Sound(self, Name, Filename, Volume=1):
+    def Load_Sound(self, Name, Filename, Volume=1.0):
         Sound = pygame.mixer.Sound(f"Art/SFX/{Filename}")
         Sound.set_volume(Volume)
         self.Sounds[Name] = Sound
@@ -29,8 +29,5 @@ class Audio_Manager:
         if Name in self.Sounds:
             self.Sounds[Name].play()
     # Pause en unpause functionaliteit
-    def Pause_Music(self):
-        pygame.mixer.music.pause()
-
-    def Resume_Music(self):
-        pygame.mixer.music.unpause()
+    def Pause_Music(self): pygame.mixer.music.pause()
+    def Resume_Music(self): pygame.mixer.music.unpause()

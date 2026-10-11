@@ -1,10 +1,7 @@
-import pygame
-import random
+import random, pygame
 from Core import Constants
 from Core.Entities.Enemies import OscilatingEnemy, ClearingBomb, TailGater, SimpleEnemy, Heart
-from Core.Functions import Random_Outside_Position_And_Direction
-
-
+# Alle enemy gamelogica wordt in deze class gehandled. schaalt de moeilijkheid van het spel langzaam op.
 class Spawner:
     def __init__(self, Game_Info):
         self._Game_Info = Game_Info
@@ -33,11 +30,11 @@ class Spawner:
                     self._Game_Info.Add_Entity(self.Generate_Group())
                 case 1:
                     # Richting, positie en snelheid
-                    Position, Direction, SpriteDirection = Random_Outside_Position_And_Direction(False)
+                    Position, Direction, SpriteDirection = self.Random_Outside_Position_And_Direction(False)
                     self._Game_Info.Add_Entity(OscilatingEnemy(Constants.Images.Oscillating_Enemy[SpriteDirection], self._Game_Info.Get_Game(), Position, (random.randint(100, 200) + 1 * self._Game_Info.Score/100)*Direction))
                 case 2:
                     # Richting, positie en snelheid
-                    Position, Direction, SpriteDirection = Random_Outside_Position_And_Direction(True)
+                    Position, Direction, SpriteDirection = self.Random_Outside_Position_And_Direction(True)
                     self._Game_Info.Add_Entity(TailGater(Constants.Images.Tailgater_Enemy[SpriteDirection], self._Game_Info.Get_Game(), Position, (random.randint(100, 200) + 1 * self._Game_Info.Score/100)*Direction))
         else:
             self._Game_Info.Add_Entity(Enemy)
@@ -53,7 +50,7 @@ class Spawner:
             if random.randint(1, 10) > 9:
                 PowerUp = True
         # Richting, positie en snelheid, elke sprite moet dit hebben
-        Position, Direction, SpriteDirection = Random_Outside_Position_And_Direction(True) # Diagonaal is False
+        Position, Direction, SpriteDirection = self.Random_Outside_Position_And_Direction(True)
         Speed = random.randint(100, 200) + 1 * self._Game_Info.Score/100 # Snelheid schaalt liniair met de score
         Sprite = Constants.Images.Parallel_Enemy[SpriteDirection]
         # Hoeveelheid enemies
@@ -67,3 +64,53 @@ class Spawner:
             PowerUpChoices = [Heart(self._Game_Info.Get_Game(), Group[PowerUpPos].Position, Speed*Direction), ClearingBomb(self._Game_Info.Get_Game(), Group[PowerUpPos].Position, Speed*Direction)]
             Group[PowerUpPos] = PowerUpChoices[PowerUpChoice]
         return Group
+
+    # Functie voor het genereren van een hele hoop informatie voor de enemy spawner, hopelijk leesbaar genoeg
+    def Random_Outside_Position_And_Direction(self, Diagonal=True):
+        Side = random.randint(0, 3)  # vanuit welke kant komt de enemy?
+        Direction = pygame.Vector2(0, 0)  # Welke richting gaat hij op?
+        Position = pygame.Vector2(0, 0)  # Welke positie spawnt hij dan in?
+        match Side:
+            case 0:  # Boven
+                Position = pygame.Vector2(random.randint(0, 500), -50)
+                Direction = pygame.Vector2(0, 1)
+            case 1:  # Onder
+                Position = pygame.Vector2(random.randint(0, 500), 550)
+                Direction = pygame.Vector2(0, -1)
+            case 2:  # Links
+                Position = pygame.Vector2(-50, random.randint(0, 500))
+                Direction = pygame.Vector2(1, 0)
+            case 3:  # Rechts
+                Position = pygame.Vector2(550, random.randint(0, 500))
+                Direction = pygame.Vector2(-1, 0)
+
+        if Diagonal:
+            Target = pygame.Vector2(random.randint(0, 500), random.randint(0, 500))
+            # Richting naar een willekeurig punt op het scherm
+            Direction = Target - Position
+            # Eenheidsvector van de richtingsvector
+            Direction.normalize_ip()
+            # Richting beklemmen zodat hij niet gekke hoeken maakt
+            Direction.x = max(-1, min(1, round(Direction.x)))
+            Direction.y = max(-1, min(1, round(Direction.y)))
+
+        # Genereert een richting voor de sprite, zodat hij de juiste sprite kan displayen
+        SpriteDirection = ""
+        if Direction == (-1, 0):
+            SpriteDirection = "LEFT"
+        elif Direction == (1, 0):
+            SpriteDirection = "RIGHT"
+        elif Direction == (0, -1):
+            SpriteDirection = "DOWN"
+        elif Direction == (0, 1):
+            SpriteDirection = "UP"
+        elif Direction == (-1, -1):
+            SpriteDirection = "LEFT-DOWN"
+        elif Direction == (1, 1):
+            SpriteDirection = "RIGHT-UP"
+        elif Direction == (1, -1):
+            SpriteDirection = "RIGHT-DOWN"
+        elif Direction == (-1, 1):
+            SpriteDirection = "LEFT-UP"
+
+        return Position, Direction, SpriteDirection

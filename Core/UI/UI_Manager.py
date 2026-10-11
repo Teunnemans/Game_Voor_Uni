@@ -21,7 +21,7 @@ class UI_Manager(UI_Group):
         # Paar debug statements, Laat statistieken van de speler zien
         if Constants.Game_Settings.Debug: self.Add_Element(Generate_Debug_Overlay(self))
 
-        # 1e scoreboard update
+        # 1e scoreboard update, zodat het menu gevult wordt.
         self.Update_ScoreBoard()
     # Update functie
     def Update(self, Eventstack):
@@ -40,10 +40,12 @@ class UI_Manager(UI_Group):
         # Pauze menu alleen te zien in game
         if self.Game.Get_GameInfo().Paused and self.Game.Get_State() == Game_State.In_Game: self.Get_Element("Paused_Ui").Visible = True
         else: self.Get_Element("Paused_Ui").Visible = False
+
         # Debug statements updaten(Dit zou ook buiten de manager kunnen gebeuren dat is prima)
         if Constants.Game_Settings.Debug: self.Update_Debug_Overlay()
 
-        self.Update_Game_UI()
+        if self.Game.Get_State() == Game_State.In_Game: self.Update_Game_UI()
+
         # Daadwerkelijke update functie, update hoe dan ook heel de UI. Niet mega efficient, maar met weinig ui prima
         for Element in self.Elements: Element.Update(Eventstack)
 
@@ -98,6 +100,8 @@ class UI_Manager(UI_Group):
         DebugUi.Get_Element("Lives").Text = f"Lives: {self.Game.Get_GameInfo().Player.Lives}"
         DebugUi.Get_Element("Score").Text = f"Score: {round(self.Game.Get_GameInfo().Score)}"
         DebugUi.Get_Element("Entitylist").Text = f"Entitylist: {len(self.Game.Get_GameInfo().EntityList)}"
+
+# FUNCTIES VOOR HET GENEREREN VAN DE UI, ZODAT DE UI MANAGER CLASS NETTER BLIJFT.
 
 # Functie voor het genereren van de UI van de pause_overlay
 def Generate_Pause_Overlay(UIManager):

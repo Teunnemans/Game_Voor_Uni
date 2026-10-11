@@ -1,13 +1,11 @@
 import time
-
-import pygame
-
-from Core import Constants, AudioManager
+from Core import Constants
 from Core.AudioManager import Audio_Manager
+from Core.Constants import *
 from Core.Functions import ReadHighScoreFile
 from Core.GameInfo import GameInfo
 from Core.UI.UI_Manager import UI_Manager
-from Core.Constants import *
+
 
 # Een abstractielaag om de code in Main.py simpel te houden,
 # centraliseert alle logica in 2 functies die steeds geroepen worden. Behoud ook de beschermde belangrijke variabelen
@@ -16,7 +14,6 @@ class Game:
 
         # Deltatime setup
         self.Deltatime = self.Old_Time = time.perf_counter()
-        self.Clock = pygame.time.Clock()
 
         # ScoreKeeping, slaat deze ook op in een Json bestand
         self.Attempts = ReadHighScoreFile()
@@ -39,8 +36,6 @@ class Game:
         # Verschil in tijd sinds laatste frame
         self.Deltatime = New_Time - self.Old_Time
         self.Old_Time = New_Time
-        # python clock update
-        self.Clock.tick()
 
     # Get-functies van de "beschermde" variabelen
     def Get_Screen(self): return self._Screen
@@ -60,6 +55,7 @@ class Game:
 
     # Set functie van de State variable
     def Set_State(self, New_State):
+        # State updates
         self._State = New_State
         self._UI_Manager.Switch_State(New_State)
         # Music state Update
@@ -71,8 +67,7 @@ class Game:
         self.Set_State(Game_State.In_Game)
         self._GameInfo = GameInfo(self)
     # Reset functie, zorgt ervoor dat de gameinfo en ui_manager opnieuw gestart worden
-    def Reset(self):
-        self.Start_Game()
+    def Reset(self): self.Start_Game()
 
     # Alle logica voor het updaten van het spel
     def Update(self, Eventstack):
