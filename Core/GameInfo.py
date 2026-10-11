@@ -7,7 +7,6 @@ from Core.Functions import Find_Center, WriteHighScoreFile
 from Core.Entities.Player import Player
 from Core.Entities.Entity import Entity
 from Core.Functions import Generate_Background
-from Core.UI.UI_Manager import Update_ScoreBoard
 
 
 class GameInfo:
@@ -18,9 +17,7 @@ class GameInfo:
         self.Paused = False
         self.ShouldToggle = True
 
-
-        # Background logica, functioneel geproduceerd
-        # 2-hoog
+        # Dynamische background logica, functioneel geproduceerd
         self.Backgrounds = []
         for x in range(2):
             Background = Generate_Background()
@@ -39,9 +36,7 @@ class GameInfo:
         self.Score = 0 # na 180 seconden 5000 punten. Dus 180/5000 punten/seconden erbij
 
         # Speler van het spel, aparte class die boven alle andere logica staat
-        self.Player = Player(Constants.Images.Player_Image, self._Game, Find_Center(pygame.Vector2(50, 50), pygame.Vector2(500, 500)))
-
-        #self.EntityList.append(TestEntity(Constants.Images.Player, self._Game, Find_Center(pygame.Vector2(50, 50), pygame.Vector2(500, 500))))
+        self.Player = Player(self._Game, Find_Center(pygame.Vector2(50, 50), pygame.Vector2(500, 500)))
 
         # Tijd sinds Game_Start
         self.Time_Since_Game_Start = 0
@@ -63,7 +58,6 @@ class GameInfo:
                 self.Score += (5000/180) * self._Game.Deltatime # zie score init voor definitie
             self.Time_Since_Game_Start += self._Game.Deltatime
             self.Update_Background()
-        # TODO HIER MOET NOG SPEL LOGICA
     # Alle logica voor het tekenen op het scherm.
     def Draw(self):
         self.Player.Draw() # Player Draw Update
@@ -80,10 +74,9 @@ class GameInfo:
                 # Reset de achtergrond
                 self.Backgrounds[Index] = Generate_Background()
                 self.Backgrounds[Index][1] = pygame.Vector2(0, -500)
-
-                # Snelheid van de backgrounds schaalt met de score
-                self.Background_Speed = pygame.Vector2(0, 150 + (self.Score/5) + self.Time_Since_Game_Start)
             Index += 1
+        # Snelheid van de backgrounds schaalt met de score
+        self.Background_Speed = pygame.Vector2(0, 150 + (self.Score / 5) + self.Time_Since_Game_Start)
     def Get_Background(self):
         # Genereert de hele achtergrond, die de renderer dan weer blit.
         FullBackGround = pygame.Surface((500, 1000))
@@ -101,13 +94,14 @@ class GameInfo:
                 self.ShouldToggle = False
             elif Event.type == pygame.KEYUP and ((Event.key == pygame.K_ESCAPE) or (Event.key == pygame.K_p)):
                 self.ShouldToggle = True
-
+    # Kan én 1 entity toevoegen, of een groep van entities
     def Add_Entity(self, Entity: Entity|list):
         if type(Entity) is list:
             self.EntityList.extend(Entity)
             return
         self.EntityList.append(Entity)
 
+    # Verwijdert de entity uit de entitylist, waardoor ze niet meer geupdate worden
     def Remove_Entity(self, Entity):
         self.EntityList.remove(Entity)
 
@@ -116,5 +110,5 @@ class GameInfo:
         # Weight voor de ranking
         self._Game.Attempts.append({"Score" : self.Score, "Time_Survived" : self.Time_Since_Game_Start, "Weight":self.Score*self.Time_Since_Game_Start})
         self._Game.Set_State(Constants.Game_State.Main_Menu)
-        Update_ScoreBoard(self._Game.Get_Ui_Manager())
+        self._Game.Get_Ui_Manager().Update_ScoreBoard()
         WriteHighScoreFile(self._Game.Attempts)

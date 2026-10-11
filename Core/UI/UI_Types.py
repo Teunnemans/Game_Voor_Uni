@@ -38,8 +38,8 @@ class Button(UI_Group):
             self.Size = Size
         self.Rect = pygame.Rect(Position, self.Size)
         # Elke knop bestaat uit een klikbaar deel en een textdeel, zodat je de knop kan zien, op te roepen met Get_Element("Name")
-        self.Add_Element(Image(self, Name + "-Image", _Image, (0, 0))) #(0, 0) relatief aan de button
-        self.Add_Element(Text_Element(self, Name + "-Text", Text, (0, 0), Color, Font))
+        self.Add_Element(Image(self, Name + "-Image", _Image, pygame.Vector2(0, 0))) #(0, 0) relatief aan de button
+        self.Add_Element(Text_Element(self, Name + "-Text", Text, pygame.Vector2(0, 0), Color, Font))
 
         # Toggle functie, zodat hij niet de event queue vult
         self.ShouldPostEvent = True
@@ -59,7 +59,7 @@ class Button(UI_Group):
                     pygame.event.post(pygame.event.Event(pygame.USEREVENT, {"Type": "Button_Pressed", "Name": self.Name}))
         else:
             self.ShouldPostEvent = True
-    def Draw(self, Screen, Offset = (0, 0)):
+    def Draw(self, Screen, Offset = pygame.Vector2(0, 0)):
         super().Draw(Screen)
         if Constants.Game_Settings.Debug:
             pygame.draw.rect(Screen, (255, 0,0 ), self.Rect)

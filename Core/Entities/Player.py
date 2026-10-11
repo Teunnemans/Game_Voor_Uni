@@ -1,5 +1,3 @@
-import math
-
 import pygame
 
 from Core import Constants
@@ -8,8 +6,8 @@ from Core.Functions import Clamp_Vector
 
 # Speler class, handlet input en is centraal voor het spel. Is er maar 1 van in het spel.
 class Player(Entity):
-    def __init__(self, Sprite,  _Game, Position: pygame.Vector2 = pygame.Vector2(0,0)):
-        super().__init__(Sprite, _Game, Position)
+    def __init__(self, _Game, Position: pygame.Vector2 = pygame.Vector2(0,0)):
+        super().__init__(Constants.Images.Player_Image, _Game, Position)
 
         # Hoe snel beweegt de speler?
         self.MaxSpeed = pygame.Vector2(250, 250)
