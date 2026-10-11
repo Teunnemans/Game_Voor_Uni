@@ -24,8 +24,10 @@ class Player(Entity):
         self.Lives = 3 # 3 Levens als standaard
         self.Blink_Timer = 0
         self.Blink_Interval = 0.2
+        # Dood logica
         self.Death_Time = 3
         self.Death_Timer = 0
+        self.FadingMusic = False
 
     # Input die de speler verplaatst aan de hand van een paar variabelen zoals acceleratie etc.
     def Update_Movement(self):
@@ -91,6 +93,11 @@ class Player(Entity):
         else:
             # DOOD FUNCTIONALITEIT
             self.Death_Timer += self._Game.Deltatime
+            if not self.FadingMusic:
+                self._Game.Get_Audio_Manager().Play_Sound("Death")
+                pygame.mixer.music.fadeout(2500)
+                # Fade de muziek weg
+                self.FadingMusic = True
             if self.Death_Timer > self.Death_Time:
                 self._Game.Get_GameInfo().End_Game()
 

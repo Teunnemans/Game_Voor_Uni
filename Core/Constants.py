@@ -5,20 +5,21 @@ from enum import Enum
 # Game init
 pygame.init()
 pygame.font.init()
+pygame.mixer.init()
 pygame.display.set_caption("Space Racer! :)")
 
 # Laad alle gebruikte plaatjes vooraf in, omdat pygame.image.load() veel overhead heeft.
 class Images:
     # Speler
-    Player_Image = pygame.transform.scale(pygame.image.load("Art/Player-Rocket.png"), (50, 50))
+    Player_Image = pygame.transform.scale(pygame.image.load("Art/Sprites/Player-Rocket.png"), (50, 50))
 
     # Clearing Bomb sprite
-    Clearing_Bomb_Sprite = pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/Clearing-Bomb.png"), (50, 50))
-    Heart_PowerUp = pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/Heart-Powerup.png"), (50, 50))
+    Clearing_Bomb_Sprite = pygame.transform.scale(pygame.image.load("Art/Sprites/Enemy_Sprites/Clearing-Bomb.png"), (50, 50))
+    Heart_PowerUp = pygame.transform.scale(pygame.image.load("Art/Sprites/Enemy_Sprites/Heart-Powerup.png"), (50, 50))
     # Plaatjes inladen die daarna in de dict gestopt wordt., sommige die zijn al gedraaid zodat ze goed uitkomen
-    Moving_Enemy = pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/Standard-Enemy.png"),(50, 50))
-    Wiggle_Enemy = pygame.transform.rotate(pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/Oscilating-Enemy.png"), (50, 50)), 180)
-    Follow_Enemy = pygame.transform.rotate(pygame.transform.scale(pygame.image.load("Art/Enemy_Sprites/Tailgater-Enemy.png"), (50, 50)), 180)
+    Moving_Enemy = pygame.transform.scale(pygame.image.load("Art/Sprites/Enemy_Sprites/Standard-Enemy.png"),(50, 50))
+    Wiggle_Enemy = pygame.transform.rotate(pygame.transform.scale(pygame.image.load("Art/Sprites/Enemy_Sprites/Oscilating-Enemy.png"), (50, 50)), 180)
+    Follow_Enemy = pygame.transform.rotate(pygame.transform.scale(pygame.image.load("Art/Sprites/Enemy_Sprites/Tailgater-Enemy.png"), (50, 50)), 180)
     # Oscilating enemy sprite
     Oscillating_Enemy = {
         "UP": pygame.transform.rotate(Wiggle_Enemy, -90),
@@ -50,10 +51,11 @@ class Images:
         "RIGHT-UP": pygame.transform.rotate(Follow_Enemy, -45),
         "RIGHT-DOWN": pygame.transform.rotate(Follow_Enemy, 45),
     }
-    MainMenuBackGround = pygame.image.load("Art/Main-Menu-Image.png")
-    Hartje = pygame.image.load("Art/Hartje.png")
-    Home = pygame.image.load("Art/Home.png")
-    Restart = pygame.image.load("Art/Restart.png")
+    MainMenuBackGround = pygame.image.load("Art/Sprites/Main-Menu-Image.png")
+    Hartje = pygame.image.load("Art/Sprites/Hartje.png")
+    Home = pygame.image.load("Art/Sprites/Home.png")
+    Restart = pygame.image.load("Art/Sprites/Restart.png")
+
 class Game_State(Enum):
     Main_Menu = 0
     In_Game = 1

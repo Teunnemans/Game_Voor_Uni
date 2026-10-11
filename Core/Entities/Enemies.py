@@ -38,6 +38,7 @@ class EnemyBase(Entity):
             Other_Entity.Hit = True
             Other_Entity.Hit_Timer = 0
             Other_Entity.Lives -= 1
+            self._Game.Get_Audio_Manager().Play_Sound("Hit")
 
     # Ook default update behaviour
     def Handle_Behaviour(self, Eventstack):
@@ -61,6 +62,7 @@ class ClearingBomb(EnemyBase):
     def Handle_Collision(self, Other_Entity):
         self._Game.Get_GameInfo().Score += 10 * len(self._Game.Get_GameInfo().EntityList)
         self._Game.Get_GameInfo().EntityList = [] # Verwijdert elke entity van de lijst, scherm wordt leeg.
+        self._Game.Get_Audio_Manager().Play_Sound("Clearing_Bomb")
 # 1 extra leven :)
 class Heart(EnemyBase):
     def __init__(self, Game, Position, Speed=0, Direction=pygame.Vector2(0, 0)):
@@ -73,6 +75,7 @@ class Heart(EnemyBase):
         if Other_Entity.Lives < 5:
             Other_Entity.Lives += 1
         self.Kill()
+        self._Game.Get_Audio_Manager().Play_Sound("Health")
 
 # Super basic enemy die gewoon beweegt
 class SimpleEnemy(EnemyBase):

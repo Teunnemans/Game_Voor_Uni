@@ -76,7 +76,7 @@ class GameInfo:
                 self.Backgrounds[Index][1] = pygame.Vector2(0, -500)
             Index += 1
         # Snelheid van de backgrounds schaalt met de score
-        self.Background_Speed = pygame.Vector2(0, 150 + (self.Score / 5) + self.Time_Since_Game_Start)
+        self.Background_Speed = pygame.Vector2(0, 150 + (self.Score / 10) + self.Time_Since_Game_Start)
     def Get_Background(self):
         # Genereert de hele achtergrond, die de renderer dan weer blit.
         FullBackGround = pygame.Surface((500, 1000))
@@ -90,8 +90,12 @@ class GameInfo:
         # Pauze logica
         for Event in Eventstack:
             if Event.type == pygame.KEYDOWN and ((Event.key == pygame.K_ESCAPE) or (Event.key == pygame.K_p)):
-                if self.ShouldToggle: self.Paused = not self.Paused  # Toggle
+                if self.ShouldToggle:
+                    self.Paused = not self.Paused  # Toggle
+                    if self.Paused: self._Game.Get_Audio_Manager().Pause_Music()
+                    else: self._Game.Get_Audio_Manager().Resume_Music()
                 self.ShouldToggle = False
+                self._Game.Get_Audio_Manager().Play_Sound("Button_Click")
             elif Event.type == pygame.KEYUP and ((Event.key == pygame.K_ESCAPE) or (Event.key == pygame.K_p)):
                 self.ShouldToggle = True
     # Kan én 1 entity toevoegen, of een groep van entities
@@ -107,8 +111,8 @@ class GameInfo:
 
     # Terug naar het menu.
     def End_Game(self):
-        # Weight voor de ranking
-        self._Game.Attempts.append({"Score" : self.Score, "Time_Survived" : self.Time_Since_Game_Start, "Weight":self.Score*self.Time_Since_Game_Start})
+        # Highscore voor de ranking
+        self._Game.Attempts.append({"Score" : self.Score, "Time_Survived" : self.Time_Since_Game_Start})
         self._Game.Set_State(Constants.Game_State.Main_Menu)
         self._Game.Get_Ui_Manager().Update_ScoreBoard()
         WriteHighScoreFile(self._Game.Attempts)

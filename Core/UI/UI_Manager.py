@@ -35,6 +35,7 @@ class UI_Manager(UI_Group):
                     if Event.dict["Name"] == "FullscreenButton":
                         self.Fullscreen = not self.Fullscreen
                         ChangeFullscreen(self.Fullscreen)
+                    self.Game.Get_Audio_Manager().Play_Sound("Button_Click")
 
         # Pauze menu alleen te zien in game
         if self.Game.Get_GameInfo().Paused and self.Game.Get_State() == Game_State.In_Game: self.Get_Element("Paused_Ui").Visible = True
@@ -75,7 +76,7 @@ class UI_Manager(UI_Group):
         Index = 0
         Attempts = self.Game.Attempts
         # Sorteer de scoreboard op punten, met de meest punten op de bovenkant
-        Attempts.sort(key=lambda Attempt: Attempt["Weight"], reverse=True)
+        Attempts.sort(key=lambda Attempt: Attempt["Score"], reverse=True)
         for Attempt in Attempts:
             Index += 1
             # Stop als er meer dan 10 punten zijn, anders loopt hij over de beschikbare ruimte heen.

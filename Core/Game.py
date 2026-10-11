@@ -1,6 +1,9 @@
 import time
 
-from Core import Constants
+import pygame
+
+from Core import Constants, AudioManager
+from Core.AudioManager import Audio_Manager
 from Core.Functions import ReadHighScoreFile
 from Core.GameInfo import GameInfo
 from Core.UI.UI_Manager import UI_Manager
@@ -24,6 +27,7 @@ class Game:
         self._State = Game_State.Main_Menu # DEZE VARIABLE BEPAALT IN WELKE STAAT HET SPEL ZICH BEVIND. ALLES PAST ZICH HIER OP AAN
         self._GameInfo = GameInfo(self) # Gameinfo object die zich elke ronde reset.
         self._UI_Manager = UI_Manager(self) # UI manager
+        self._Audio_Manager = Audio_Manager()
 
         # Update ook meteen de state, zodat de ui manager de juiste ui kan tonen
         self.Set_State(self._State)
@@ -43,6 +47,7 @@ class Game:
     def Get_GameInfo(self): return self._GameInfo
     def Get_Ui_Manager(self): return self._UI_Manager
     def Get_State(self): return self._State
+    def Get_Audio_Manager(self): return self._Audio_Manager
 
     # returned de juist achtergrond
     def Get_Background(self):
@@ -57,7 +62,11 @@ class Game:
     def Set_State(self, New_State):
         self._State = New_State
         self._UI_Manager.Switch_State(New_State)
-
+        # Music state Update
+        if New_State == Constants.Game_State.In_Game:
+            self._Audio_Manager.Play_Music("GameMusic.ogg", 0.6)
+        elif New_State == Constants.Game_State.Main_Menu:
+            self._Audio_Manager.Play_Music("MainMenuMusic.ogg", 0.6)
     def Start_Game(self):
         self.Set_State(Game_State.In_Game)
         self._GameInfo = GameInfo(self)
